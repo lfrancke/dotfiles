@@ -1,0 +1,30 @@
+[user]
+  name = Lars Francke
+  email = lars.francke@gmail.com
+
+[alias]
+  l = log --oneline -n 20 --graph
+  s = status -s
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
+
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+
+[svn]
+  rmdir = true
+
+[push]
+  default = simple
+
+[rerere]
+  enabled = true
+
+[credential]
+	helper = osxkeychain
