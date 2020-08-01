@@ -1,0 +1,19 @@
+0000000000000000000000000000000000000000 b0052c7958db673bcf9d7a14103599c11e2b0513 Lars Francke <lars.francke@gmail.com> 1531072678 +0200	clone: from https://github.com/robbyrussell/oh-my-zsh.git
+b0052c7958db673bcf9d7a14103599c11e2b0513 a1448e9f8a62164caae47a2f48f9c9766c1eaa60 Lars Francke <lars.francke@gmail.com> 1532464972 +0200	pull --rebase --stat origin master: Fast-forward
+a1448e9f8a62164caae47a2f48f9c9766c1eaa60 91b771914bc7c43dd7c7a43b586c5de2c225ceb7 Lars Francke <lars.francke@gmail.com> 1533631349 +0200	pull --rebase --stat origin master: Fast-forward
+91b771914bc7c43dd7c7a43b586c5de2c225ceb7 abca62add1a6d0ac34e697beac8682076d5c1dd7 Lars Francke <lars.francke@gmail.com> 1534843259 +0200	pull --rebase --stat origin master: Fast-forward
+abca62add1a6d0ac34e697beac8682076d5c1dd7 918a78cfdb92b9301168cb9d62d8ddbbdfd907f6 Lars Francke <lars.francke@gmail.com> 1537267884 +0200	pull --rebase --stat origin master: Fast-forward
+918a78cfdb92b9301168cb9d62d8ddbbdfd907f6 489be2452a6410a2c7837910c4cd3c0ed47a7481 Lars Francke <lars.francke@gmail.com> 1539681320 +0200	pull --rebase --stat origin master: Fast-forward
+489be2452a6410a2c7837910c4cd3c0ed47a7481 3d8f2bda599c8c6d160dc448e5ab28aaf2d5e90d Lars Francke <lars.francke@gmail.com> 1542122313 +0100	pull --rebase --stat origin master: Fast-forward
+3d8f2bda599c8c6d160dc448e5ab28aaf2d5e90d e780209c33883d0ecab39dd50663e2e1424250c9 Lars Francke <lars.francke@gmail.com> 1543342218 +0100	pull --rebase --stat origin master: Fast-forward
+e780209c33883d0ecab39dd50663e2e1424250c9 2614b7ecdfe8b8f0cbeafffefb5925196f4011d4 Lars Francke <lars.francke@gmail.com> 1544605431 +0100	pull --rebase --stat origin master: Fast-forward
+2614b7ecdfe8b8f0cbeafffefb5925196f4011d4 a29950146b9d992caf880679dfce90c6a1ef2eea Lars Francke <lars.francke@gmail.com> 1547037644 +0100	pull --rebase --stat origin master: Fast-forward
+a29950146b9d992caf880679dfce90c6a1ef2eea 173d4ca68f1ff4b04e9f3fd783244c309d848092 Lars Francke <lars.francke@gmail.com> 1588492848 +0200	pull --rebase --stat origin master: Fast-forward
+173d4ca68f1ff4b04e9f3fd783244c309d848092 fd786291bab7468c7cdd5066ac436218a1fba9e2 Lars Francke <lars.francke@gmail.com> 1589535523 +0200	rebase (start): checkout fd786291bab7468c7cdd5066ac436218a1fba9e2
+fd786291bab7468c7cdd5066ac436218a1fba9e2 fd786291bab7468c7cdd5066ac436218a1fba9e2 Lars Francke <lars.francke@gmail.com> 1589535523 +0200	rebase (finish): returning to refs/heads/master
+fd786291bab7468c7cdd5066ac436218a1fba9e2 93cc3964e2d265ab0571298d69d2eed0a65d13f2 Lars Francke <lars.francke@gmail.com> 1590732884 +0200	rebase (start): checkout 93cc3964e2d265ab0571298d69d2eed0a65d13f2
+93cc3964e2d265ab0571298d69d2eed0a65d13f2 93cc3964e2d265ab0571298d69d2eed0a65d13f2 Lars Francke <lars.francke@gmail.com> 1590732884 +0200	rebase (finish): returning to refs/heads/master
+93cc3964e2d265ab0571298d69d2eed0a65d13f2 7deaff71a2be08145d83f0177edbf2dfb3e91262 Lars Francke <lars.francke@gmail.com> 1594373079 +0200	pull --rebase --stat origin master (start): checkout 7deaff71a2be08145d83f0177edbf2dfb3e91262
+7deaff71a2be08145d83f0177edbf2dfb3e91262 7deaff71a2be08145d83f0177edbf2dfb3e91262 Lars Francke <lars.francke@gmail.com> 1594373079 +0200	pull --rebase --stat origin master (finish): returning to refs/heads/master
+7deaff71a2be08145d83f0177edbf2dfb3e91262 95218372402afc9aeafc89c0984310387ce79599 Lars Francke <lars.francke@gmail.com> 1595849433 +0200	pull --rebase --stat origin master (start): checkout 95218372402afc9aeafc89c0984310387ce79599
+95218372402afc9aeafc89c0984310387ce79599 95218372402afc9aeafc89c0984310387ce79599 Lars Francke <lars.francke@gmail.com> 1595849433 +0200	pull --rebase --stat origin master (finish): returning to refs/heads/master

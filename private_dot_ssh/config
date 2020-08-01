@@ -6,11 +6,5 @@ Host *
     compression yes
     UseKeychain yes
 
-Host gitlab.opencore.com
-    port 2233
-
-Host *.gitlab.opencore.com
-    port 2233
-
 Host taz-dn013
   ProxyCommand ssh root@taz-nn001 -W %h:%p

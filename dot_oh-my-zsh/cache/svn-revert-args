@@ -1,0 +1,4 @@
+args=( ${(Q)"${(z)$(<<\EO:args
+'--targets=:arg:' '(--recursive)-R' '(-R)--recursive' '--depth=:operation depth (how far to recurse):(empty files immediates infinity)' '(--quiet)-q' '(-q)--quiet' '*--cl=:change list:_svn_changelists' '*--changelist=:change list:_svn_changelists' '*--cl=:change list:_svn_changelists' '*--changelist=:change list:_svn_changelists' '--username=:arg:' '--password=:arg:' '--no-auth-cache' '--non-interactive' '--force-interactive' '--trust-server-cert' '--trust-server-cert-failures=:failures:_values -s , "certificate failures to ignore" "unknown-ca[unknown authority]" "cn-mismatch[hostname mismatch]" "expired[certificate expired]" "not-yet-valid[certificate not yet valid]" "other[all other failures]"' '--config-dir=:config dir:_directories' '*--config-option=: :_svn_config_options'
+EO:args
+)}"} )

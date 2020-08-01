@@ -1,0 +1,18 @@
+= github.com/lfrancke/dotfiles
+
+Lars Francke's dotfiles, managed with [`chezmoi`](https://github.com/twpayne/chezmoi).
+
+Install them with:
+
+    chezmoi init https://github.com/lfrancke/dotfiles.git
+
+Secrets are stored in https://bitwarden.com[BitWarden] and you'll need the https://github.com/bitwarden/cli[BitWarden CLI] installed.
+Login to BitWarden with:
+
+----
+bw login <email>
+bw unlock
+
+export BW_SESSION= ... <as printed by bw unlock>
+----
+
