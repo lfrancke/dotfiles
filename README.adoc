@@ -1,6 +1,6 @@
 = github.com/lfrancke/dotfiles
 
-Lars Francke's dotfiles, managed with [`chezmoi`](https://github.com/twpayne/chezmoi).
+Lars Francke's dotfiles, managed with https://github.com/twpayne/chezmoi[`chezmoi`].
 
 Install them with:
 
