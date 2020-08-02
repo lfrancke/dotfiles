@@ -107,11 +107,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-export PATH="$PATH:{{ .chezmoi.homedir }}/dev/external/openjdk/openjdk-hg/webrev"
+
 export PATH="$PATH:{{ .chezmoi.homedir }}/.dotnet/tools"
 
-
+{{ if eq .chezmoi.os "darwin" -}}
 export JAVA_HOME=`/usr/libexec/java_home -v 11`
+{{ else if eq .chezmoi.os "linux" -}}
+TODO
+{{ end -}}
+
 export HSTR_CONFIG=hicolor
 
 . ~/.zsh_aliases
