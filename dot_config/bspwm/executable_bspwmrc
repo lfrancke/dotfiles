@@ -21,7 +21,7 @@ firefox &
 
 setxkbmap de neo -option
 
-xrandr --output eDP-1 --scale 0.9x0.9
+xrandr --output eDP-1 --scale 0.7x0.7
 
 redshift-gtk &
 "$HOME"/.config/polybar/launch.sh
