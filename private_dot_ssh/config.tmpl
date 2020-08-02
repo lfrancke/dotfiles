@@ -1,0 +1,15 @@
+Host *
+  tcpkeepalive yes
+  serveralivecountmax 6
+  stricthostkeychecking no
+  serveraliveinterval 15
+  compression yes
+{{ if eq .chezmoi.os "darwin" -}}
+  UseKeychain yes
+{{ end -}}
+
+Host github.com
+  User git
+
+Host taz-dn013
+  ProxyCommand ssh root@taz-nn001 -W %h:%p
