@@ -7,3 +7,5 @@ target/
 .project
 logs/
 .vagrant/
+ *.pyc
+.svn
