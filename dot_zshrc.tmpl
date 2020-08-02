@@ -110,12 +110,4 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:{{ .chezmoi.homedir }}/.dotnet/tools"
 
-{{ if eq .chezmoi.os "darwin" -}}
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
-{{ else if eq .chezmoi.os "linux" -}}
-TODO
-{{ end -}}
-
 export HSTR_CONFIG=hicolor
-
-. ~/.zsh_aliases
