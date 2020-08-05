@@ -67,9 +67,6 @@ plugins=(
   git
   mvn
   ripgrep
-{{ if eq .chezmoi.os "linux" -}}
-  ssh-agent
-{{ end -}}
   vi-mode
   zsh-syntax-highlighting
 )

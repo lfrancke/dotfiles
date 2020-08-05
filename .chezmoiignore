@@ -1,2 +1,11 @@
 README.adoc
 .idea
+
+{{- if ne .chezmoi.os "linux" }}
+.config/bspwm
+.config/polybar
+.config/sxhkd
+.Xresources
+.Xresources.d/
+.xinitrc
+{{- end }}
