@@ -36,10 +36,8 @@ fi
 
 setxkbmap de neo -option
 
-# To automatically select the correct display profile on startup
-autorandr -c
-
 # To work around "grey" boxes in Java apps
-wmname LG3D &
+wmname LG3D
+export _JAVA_AWT_WM_NONREPARENTTING=1
 
 exec bspwm 2> ~/.bspwm.log

@@ -17,11 +17,12 @@ firefox &
 
 setxkbmap de neo -option
 
-xrandr --output eDP-1 --scale 0.7x0.7
+xrandr --output eDP1 --scale 0.7x0.7
 
-# To work around "grey" boxes in Java apps
-wmname LG3D &
+wmname LG3D
+export _JAVA_AWT_WM_NONREPARENTTING=1
 
 redshift-gtk &
-"$HOME"/.config/polybar/launch.sh
-compton &
+"$HOME"/.config/polybar/launch_multimonitor.sh
+picom &
+

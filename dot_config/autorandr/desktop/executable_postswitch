@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
 
-for m in $(polybar --list-monitors | cut -d":" -f1); do
-  MONITOR=$m polybar --reload top &
-done
+~/.config/polybar/launch_multimonitor.sh
+~/.local/bin/bspwm_reorder.sh HDMI2 eDP1
