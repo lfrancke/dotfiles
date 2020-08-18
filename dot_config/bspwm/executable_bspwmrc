@@ -22,7 +22,7 @@ xrandr --output eDP1 --scale 0.7x0.7
 wmname LG3D
 export _JAVA_AWT_WM_NONREPARENTTING=1
 
-redshift-gtk &
-"$HOME"/.config/polybar/launch_multimonitor.sh
 picom &
-
+"$HOME"/.config/polybar/launch_multimonitor.sh
+redshift-gtk &
+dunst &
