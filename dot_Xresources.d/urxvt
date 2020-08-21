@@ -3,7 +3,7 @@ URxvt.scrollBar: false
 URxvt.foreground: white
 URxvt.background: black
 URxvt.secondaryScroll: true
-URxvt.font: xft:Source Code Pro:pixelsize=14
+URxvt.font: xft:Source Code Pro:size=11
 URxvt.perl-ext-common: default,tabbedex,matcher,clipboard,resize-font
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1

@@ -15,4 +15,3 @@ bw unlock
 
 export BW_SESSION= ... <as printed by bw unlock>
 ----
-
