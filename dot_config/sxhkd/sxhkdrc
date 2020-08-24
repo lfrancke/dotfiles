@@ -17,6 +17,9 @@ super + @space
 super + Tab
   rofi -show window
 
+super + j
+  rofi -show calc -modi calc -no-show-match -no-sort -no-history -calc-command "echo -n '{result}' | xsel"
+
 # make sxhkd reload its configuration files:
 super + Escape
   pkill -USR1 -x sxhkd

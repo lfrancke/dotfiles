@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
 ~/.config/polybar/launch_multimonitor.sh
-~/.local/bin/bspwm_reorder.q
+~/.local/bin/bspwm_reorder.sh eDP1

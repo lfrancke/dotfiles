@@ -1,0 +1,9 @@
+configuration {
+  modi: "drun,window,ssh,run,calc";
+  show-icons: true;
+  sort: false;
+  sorting-method: "fzf";
+  combi-modi: "window,drun";
+  matching: "fuzzy";
+  theme: "fancy";
+}
