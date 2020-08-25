@@ -8,7 +8,7 @@
 
 # terminal emulator
 super + Return
-  urxvt
+  alacritty
 
 # program launcher
 super + @space
@@ -67,7 +67,7 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {_,shift + }{n,g,r,t}
+super + {_,shift + }{s, n, r, t}
   bspc node -{f,s} {west,north,south,east}
 
 # focus the node for the given path jump

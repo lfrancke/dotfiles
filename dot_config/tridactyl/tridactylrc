@@ -19,5 +19,9 @@ bind u undo
 bind f hint
 bind F hint -b
 
-bind s fillcmdline open search
+bind s fillcmdline tabopen search
 
+bind gt tabnext_gt
+bind gT tabprev
+
+bind b fillcmdline taball

@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 
 ~/.config/polybar/launch_multimonitor.sh
-~/.local/bin/bspwm_reorder.sh HDMI2 eDP1
+~/bin/bspwm_reorder.sh HDMI2 eDP1
