@@ -1,0 +1,23 @@
+jsb Object.keys(tri.config.get ("nmaps")).map(k=>tri.excmds.unbind(k))
+
+bind : fillcmdline_notrail
+
+bind s scrollpx -50
+bind t scrollpx 50
+bind n scrollline -10
+bind r scrollline 10
+
+bind gg scrollto 0
+bind G scrollto 10
+
+bind S back
+bind T forward
+
+bind d tabclose
+bind u undo
+
+bind f hint
+bind F hint -b
+
+bind s fillcmdline open search
+
