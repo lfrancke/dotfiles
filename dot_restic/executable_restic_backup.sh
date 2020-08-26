@@ -8,9 +8,9 @@ set -e -o pipefail
 # If killed by systemd, like $(systemctl stop restic), then it kills the whole cgroup and all it's subprocesses.
 # However if we kill this script ourselves, we need this trap that kills all subprocesses manually.
 exit_hook() {
-	echo "In exit_hook(), being killed" >&2
-	jobs -p | xargs kill
-	restic unlock
+  echo "In exit_hook(), being killed" >&2
+  jobs -p | xargs kill
+  restic unlock
 }
 trap exit_hook INT TERM
 
@@ -24,9 +24,6 @@ source ~/.restic/restic_env.sh
 # However if put in subprocesses, wait(1) waits until the process finishes OR signal is received.
 # Reference: https://unix.stackexchange.com/questions/146756/forward-sigterm-to-child-in-bash
 
-# Remove locks from other stale processes to keep the automated backup running.
-restic unlock &
-wait $!
 
 # TODO: Show a notification that the backup started
 
@@ -42,6 +39,10 @@ B2_CONNECTIONS=50
 
 {
   printf "*** RESTIC BACKUP SCRIPT STARTED AT %s\n" "$(date -R)"
+
+  # Remove locks from other stale processes to keep the automated backup running.
+  restic unlock &
+  wait $!
 
   # Do the backup!
   # See restic-backup(1) or http://restic.readthedocs.io/en/latest/040_backup.html
