@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 (
   flock 200
 
@@ -10,7 +10,7 @@
   tray_output=eDP1
 
   for m in $outputs; do
-    if [[ $m == "HDMI2" ]]; then
+    if [[ "$m" =~ ^(HDMI2|DP2-1|DP2-2)$ ]]; then
       tray_output=$m
     fi
   done
