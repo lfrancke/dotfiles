@@ -3,6 +3,6 @@
 .bash_sessions
 .Xauthority
 /home/lars/.m2/repository
-/swapfile
+/var/swap/swapfile
 /var/log
 /var/cache

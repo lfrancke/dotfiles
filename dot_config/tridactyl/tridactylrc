@@ -8,7 +8,7 @@ bind n scrollline -10
 bind r scrollline 10
 
 bind gg scrollto 0
-bind G scrollto 10
+bind G scrollto 100
 
 bind S back
 bind T forward
