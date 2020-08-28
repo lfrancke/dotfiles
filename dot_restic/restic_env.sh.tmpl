@@ -1,8 +1,0 @@
-export B2_ACCOUNT_ID={{ (bitwarden "item" "dotfiles: backblaze account").login.username }}
-export B2_ACCOUNT_KEY={{ (bitwarden "item" "dotfiles: backblaze account").login.password }}
-
-export RESTIC_EXCLUDE_FILE=~/.restic/restic_excludes
-export RESTIC_LOG_FILE=~/.restic/restic.log
-
-export RESTIC_REPOSITORY=b2:resticbackupeu:/lars_laptop2020
-export RESTIC_PASSWORD_FILE=~/.restic/restic_pwd

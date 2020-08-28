@@ -1,8 +1,0 @@
-*.DS_Store
-*.swp
-.bash_sessions
-.Xauthority
-/home/lars/.m2/repository
-/var/swap/swapfile
-/var/log
-/var/cache
