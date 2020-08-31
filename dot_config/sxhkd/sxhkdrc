@@ -139,4 +139,4 @@ XF86MonBrightnessUp
 
 # Volume controls
 XF86Audio{Mute,RaiseVolume,LowerVolume}
-  amixer -q set Master {toggle,5%+,5%-}
+  amixer -c 0 -q set Master {toggle,5%+,5%-}
