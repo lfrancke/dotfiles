@@ -66,12 +66,12 @@ plugins=(
   colored-man-pages
   common-aliases
   encode64
-  fzf
   git
   mvn
   ripgrep
   vi-mode
   zsh-syntax-highlighting
+  fzf # This needs to be _after_ vi-mode as vi-mode overrides CTRL+R again
 )
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
