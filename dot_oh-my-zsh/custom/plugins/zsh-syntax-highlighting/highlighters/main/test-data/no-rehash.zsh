@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # -------------------------------------------------------------------------------------------------
 # Copyright (c) 2020 zsh-syntax-highlighting contributors
 # All rights reserved.
@@ -28,13 +27,13 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-hash sudo=false
-touch foo
+hash zsyh-hashed-command=/usr/bin/env
+BUFFER='doesnotexist; zsyh-hashed-command'
 
-BUFFER='sudo -e ./foo'
-
+# Test that highlighting "doesnotexist" does not invoke the "rehash" builtin,
+# which would delete hashed commands (such as "zsyh-hashed-command").
 expected_region_highlight=(
-  '1 4 precommand' # sudo
-  '6 7 single-hyphen-option' # -e
-  '9 13 path' # ./foo
+  "1 12 unknown-token"     # doesnotexist
+  "13 13 commandseparator" # ;
+  "15 33 hashed-command"   # zsyh-hashed-command
 )
