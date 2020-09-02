@@ -91,3 +91,6 @@ export HSTR_CONFIG=hicolor
 # Required because fd is a default alias from "common-aliases" but it clashes with the fd tool
 # See: https://github.com/sharkdp/fd/issues/104
 unalias fd
+
+# Commands with a leading space are not put in history
+setopt histignorespace
