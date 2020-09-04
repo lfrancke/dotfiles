@@ -1,1 +1,1 @@
-/home/lars/.config/systemd/user/updates-notifier.timer
+{{ .chezmoi.homedir }}/.config/systemd/user/updates-notifier.timer
