@@ -27,3 +27,4 @@ picom &
 "$HOME"/.config/polybar/launch_multimonitor.sh
 redshift-gtk &
 dunst &
+libinput-gestures &
