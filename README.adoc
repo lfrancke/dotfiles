@@ -15,3 +15,5 @@ bw unlock
 
 export BW_SESSION= ... <as printed by bw unlock>
 ----
+
+This is meant to work in tandem with my https://github.com/lfrancke/arch-setup/[arch-setup] repository which deals with all the system level stuff while these dotfiles are all user local.
