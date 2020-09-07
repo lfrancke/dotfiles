@@ -2,4 +2,3 @@
 
 ~/.config/polybar/launch_multimonitor.sh
 ~/bin/bspwm_reorder.sh HDMI2 eDP1
-setxkbmap de neo -option

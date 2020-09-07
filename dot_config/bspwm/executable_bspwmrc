@@ -18,8 +18,6 @@ bspc rule -a VLC state=floating
 bspc rule -a Firefox desktop='^1'
 firefox &
 
-setxkbmap de neo -option
-
 wmname LG3D
 export _JAVA_AWT_WM_NONREPARENTTING=1
 

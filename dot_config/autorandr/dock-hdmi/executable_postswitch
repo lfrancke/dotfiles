@@ -2,4 +2,3 @@
 
 ~/.config/polybar/launch_multimonitor.sh
 ~/bin/bspwm_reorder.sh DP2-1 eDP1
-setxkbmap de neo -option
