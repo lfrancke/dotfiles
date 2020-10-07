@@ -13,7 +13,7 @@ bspc config active_border_color \#DAF7A6
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
- bspc config single_monocle       true
+bspc config single_monocle       true
 
 bspc rule -a VLC state=floating
 bspc rule -a Firefox desktop='^1'
@@ -24,8 +24,10 @@ setxkbmap de neo -option
 wmname LG3D
 export _JAVA_AWT_WM_NONREPARENTTING=1
 
-picom &
+# I don't see the benefit at the moment and it causes issues with Zoom and other apps
+#picom &
 "$HOME"/.config/polybar/launch_multimonitor.sh
 redshift-gtk &
 dunst &
 libinput-gestures &
+flameshot &
