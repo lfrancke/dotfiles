@@ -1,6 +1,0 @@
-[Unit]
-Description=Check and notify pacman updates
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/update-notifier
