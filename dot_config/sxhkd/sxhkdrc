@@ -140,3 +140,6 @@ XF86MonBrightnessUp
 # Volume controls
 XF86Audio{Mute,RaiseVolume,LowerVolume}
   amixer -c 0 -q set Master {toggle,5%+,5%-}
+
+super + ctrl + f
+  ~/bin/larszoom

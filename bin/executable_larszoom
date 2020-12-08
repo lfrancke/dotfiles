@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+zoom 'zoommtg://zoom.us/join?action=join&confno=5067892321'
