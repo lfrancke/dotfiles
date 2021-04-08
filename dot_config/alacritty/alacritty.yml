@@ -4,6 +4,12 @@ key_bindings:
   - { key: Left, mods: Shift, chars: "\x02\x70" }
   - { key: Right, mods: Shift, chars: "\x02\x6e" }
 
+mouse_bindings:
+  - { mouse: 8, mods: Control, action: DecreaseFontSize }
+  - { mouse: 9, mods: Control, action: IncreaseFontSize }
+  - { mouse: 8, mods: Shift, action: ResetFontSize }
+  - { mouse: 9, mods: Shift, action: ResetFontSize }
+
 
   # Configuration for Alacritty, the GPU enhanced terminal emulator.
   # Any items in the `env` entry below will be added as

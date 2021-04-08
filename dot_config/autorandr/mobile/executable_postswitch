@@ -1,4 +1,10 @@
 #! /usr/bin/env bash
 
+sleep 1
 ~/.config/polybar/launch_multimonitor.sh
+sleep 1
 ~/bin/bspwm_reorder.sh eDP1
+sleep 1
+bspc config -m eDP1 right_padding 0
+bspc config -m eDP1 bottom_padding 0
+
