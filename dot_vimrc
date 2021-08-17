@@ -17,7 +17,9 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'habamax/vim-asciidoctor'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'liuchengxu/vim-which-key'
 Plug 'metakirby5/codi.vim'
+Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pearofducks/ansible-vim'
 Plug 'tpope/vim-fugitive'
@@ -25,7 +27,6 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'morhetz/gruvbox'
 call plug#end()
 
 
