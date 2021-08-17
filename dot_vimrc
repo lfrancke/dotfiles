@@ -25,7 +25,6 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-"Plug 'wting/rust.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
