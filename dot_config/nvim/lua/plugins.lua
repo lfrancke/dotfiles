@@ -105,5 +105,12 @@ end
     end
   }
 
+  use {
+    'VonHeikemen/searchbox.nvim',
+    requires = {
+      { 'MunifTanjim/nui.nvim' }
+    }
+  }
+
 end)
 

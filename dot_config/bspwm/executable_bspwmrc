@@ -17,7 +17,6 @@ bspc config single_monocle       true
 
 bspc rule -a VLC state=floating
 bspc rule -a Firefox desktop='^1'
-firefox &
 
 setxkbmap de neo -option
 

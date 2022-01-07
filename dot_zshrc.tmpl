@@ -63,18 +63,36 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  aliases
+  alias-finder
   autojump
   battery
   colored-man-pages
+  command-not-found
   common-aliases
+  copydir
+  copyfile
+  docker
+  docker-compose
+  dotenv
   encode64
+  fzf
   git
+  git-auto-fetch
+  helm
+  kubectl
   mvn
+  python
   ripgrep
+  rust
+  systemd
+  tmux
   vi-mode
   zsh-syntax-highlighting
   fzf # This needs to be _after_ vi-mode as vi-mode overrides CTRL+R again
 )
+
+export GIT_AUTO_FETCH_INTERVAL=3600
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
@@ -89,10 +107,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export HSTR_CONFIG=hicolor
-
-# Required because fd is a default alias from "common-aliases" but it clashes with the fd tool
-# See: https://github.com/sharkdp/fd/issues/104
-unalias fd
 
 # Commands with a leading space are not put in history
 setopt histignorespace

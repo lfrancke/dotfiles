@@ -1,9 +1,7 @@
-.PHONY: all update-plug.vim update-oh-my-zsh update-zsh-syntax-highlighting
+.PHONY: all update-oh-my-zsh update-zsh-syntax-highlighting
 
-all: update-plug.vim update-oh-my-zsh update-zsh-syntax-highlighting
+all: update-oh-my-zsh update-zsh-syntax-highlighting
 
-update-plug.vim:
-	curl -s -L https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > $$(chezmoi source-path ~/.vim/autoload/plug.vim)
 
 update-oh-my-zsh:
 	curl -s -L -o oh-my-zsh-master.tar.gz https://github.com/robbyrussell/oh-my-zsh/archive/master.tar.gz
