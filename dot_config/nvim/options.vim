@@ -1,6 +1,6 @@
 let mapleader=","
 
-set background=light
+set background=dark
 set history=1000
 
 " Abandoned buffers are hidden and not unloaded
@@ -53,6 +53,10 @@ set novisualbell
 
 " I believe this might be redundant but doesnt seem to hurt either
 set encoding=utf8
+
+" Number of screen lines to use for the command-line.
+" This will only work as of Neovim 0.8
+set cmdheight=0
 
 """" REVIEWED SETTINGS UP UNTIL HERE, NOT BELOW
 

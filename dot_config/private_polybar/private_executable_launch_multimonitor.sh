@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 (
   flock 200
-
   killall -q polybar
 
-  while pgrep -u $UID -x polybar >/dev/null; do sleep 0.5; done
+  attempt=1
+  while pgrep -u $UID -x polybar >/dev/null; do
+          attempt=$(($attempt+1))
+          ## Re-kill polybar every 6 attempts
+          if [ $attempt -gt 6 ]; then
+                  echo "Polybar didn't die in time, trying to kill it again"
+                  attempt=1
+                  killall -q polybar
+          fi
+          sleep 0.5;
+  done
 
   outputs=$(xrandr --query | grep " connected" | cut -d" " -f1)
   tray_output=eDP1

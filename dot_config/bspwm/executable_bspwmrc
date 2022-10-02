@@ -17,6 +17,7 @@ bspc config single_monocle       true
 
 bspc rule -a VLC state=floating
 bspc rule -a Firefox desktop='^1'
+bspc rule -a zoom state=floating center=on follow=on border=off
 
 setxkbmap de neo -option
 

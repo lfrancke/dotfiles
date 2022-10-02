@@ -1,2 +1,8 @@
 #!/usr/bin/env bash
-tmux attach -t `~/bin/tmux-first-unattached-session.sh` 2> /dev/null || tmux
+foo=$(~/bin/tmux-first-unattached-session.sh 2> /dev/null)
+if [ -z "${foo}" ]; then
+  tmux
+else
+  tmux attach -t $foo
+fi
+

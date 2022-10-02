@@ -11,10 +11,6 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
 
-  -- Speed up startup time of Neovim.
-  -- This will supposedly be merged into Neovim at some point
-  use('lewis6991/impatient.nvim')
-
   -- Common configuration stuff for the built-in LSP client
   use('neovim/nvim-lspconfig')
 
@@ -49,14 +45,22 @@ return require('packer').startup(function(use)
   use('L3MON4D3/LuaSnip')
   
   -- File tree plugin and icons for file types
-  use('kyazdani42/nvim-web-devicons' )
-  use('kyazdani42/nvim-tree.lua')
+  use {
+  'kyazdani42/nvim-tree.lua',
+  requires = {
+    'kyazdani42/nvim-web-devicons', -- optional, for file icons
+  },
+}
   
   -- Java LSP bindings
   -- TODO: Plug 'mfussenegger/nvim-jdtls'
   
   -- Plugin to show all open buffers
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'akinsho/bufferline.nvim',
+    branch = "main",
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
 
   -- Requires neovim 0.6
   use {
@@ -64,7 +68,7 @@ return require('packer').startup(function(use)
     run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = "maintained",
+        ensure_installed = { "rust" },
         highlight = {
           enable = true
         },
@@ -78,7 +82,7 @@ return require('packer').startup(function(use)
 
     end
   }
-
+  
   -- Statusline
   use('famiu/feline.nvim')
 
