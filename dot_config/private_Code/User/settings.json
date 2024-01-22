@@ -1,4 +1,7 @@
 {
     "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Default Light+",
+    "update.showReleaseNotes": false,
+    "cmake.configureOnOpen": true,
+    "redhat.telemetry.enabled": false
 }

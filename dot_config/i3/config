@@ -43,6 +43,7 @@ exec slack
 
 exec firefox
 exec flameshot
+exec redshift-gtk
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -230,3 +231,13 @@ focus_follows_mouse no
 
 gaps inner 10px
 gaps outer 8px
+
+
+for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
+
+
+# Create Notepad scratchpad
+bindsym $mod+Ctrl+n [class="Notepadqq" instance="notepadqq-bin"] exec --no-statup-id notepadqq, scratchpad show
+for_window [class="Notepadqq" instance="notepadqq-bin"] move scratchpad

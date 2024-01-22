@@ -1,15 +1,9 @@
--- Automatically compile the Packer suff on save
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
 return require('packer').startup(function(use)
 
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
+
+  
 
   -- Common configuration stuff for the built-in LSP client
   use('neovim/nvim-lspconfig')
@@ -102,11 +96,11 @@ end
   -- Indentation guidelines
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('indent_blankline').setup({
-        show_current_context = true
-      })
-    end
+    --    config = function()
+     -- require('indent_blankline').setup({
+      --  show_current_context = true
+--      })
+ --   end
   }
 
   use {

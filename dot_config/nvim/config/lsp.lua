@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
   cmd = { "lua-language-server" },
   on_attach = on_attach,
   flags = {

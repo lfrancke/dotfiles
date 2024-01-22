@@ -373,16 +373,16 @@ selection:
   #   - (Linux/BSD) user login shell
   #   - (Windows) powershell
 shell:
-  program: /bin/zsh
+  program: /bin/bash
   args:
     - -c
-    - "~/bin/tmux-attach-or-create.sh"
-
+    - "~/bin/zellij-attach-or-create.sh"
+      
   # Startup directory
   #
   # Directory the shell is started in. If this is unset, or `None`, the working
   # directory of the parent process will be used.
-  working_directory: /home/lars
+working_directory: /home/lars
 
   # WinPTY backend (Windows only)
   #
