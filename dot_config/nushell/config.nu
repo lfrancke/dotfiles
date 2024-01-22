@@ -762,3 +762,12 @@ $env.config = {
 }
 
 use ~/.cache/starship/init.nu
+
+
+alias ll = ls -l
+
+alias dl   = cd ~/Downloads
+alias dev  = cd ~/dev
+alias devs = cd ~/dev/stackable
+alias deve = cd ~/dev/external
+alias devo = cd ~/dev/opencore
