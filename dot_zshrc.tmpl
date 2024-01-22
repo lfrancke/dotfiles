@@ -1,4 +1,7 @@
-export PATH=$HOME/bin:$PATH
+export PATH=/opt/intellij-idea-ultimate-edition/bin:$HOME/bin:$PATH
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+
+source /usr/bin/switch.sh
 
 fpath+=(~/.config/hcloud/completion/zsh)
 
@@ -70,7 +73,6 @@ plugins=(
   colored-man-pages
   command-not-found
   common-aliases
-  copydir
   copyfile
   direnv
   docker
