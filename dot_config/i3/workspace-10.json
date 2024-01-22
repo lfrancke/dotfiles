@@ -1,0 +1,74 @@
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1525,
+       "width": 3800,
+       "x": 20,
+       "y": 55
+    },
+    "marks": [],
+    "name": "Slack",
+    "percent": 0.5,
+    "swallows": [
+       {
+        "class": "^Slack$",
+        "instance": "^slack$"
+       }
+    ],
+    "type": "con"
+}
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 500,
+               "width": 940,
+               "x": 4807,
+               "y": 572
+            },
+            "marks": [],
+            "name": "Friends - Discord",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^discord$",
+                "instance": "^discord$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1005,
+               "width": 1880,
+               "x": 3860,
+               "y": 55
+            },
+            "marks": [],
+            "name": "Signal",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^Signal$",
+                "instance": "^signal$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
