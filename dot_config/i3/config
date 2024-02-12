@@ -238,6 +238,3 @@ for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Acc
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
 
 
-# Create Notepad scratchpad
-bindsym $mod+Ctrl+n [class="Notepadqq" instance="notepadqq-bin"] exec --no-statup-id notepadqq, scratchpad show
-for_window [class="Notepadqq" instance="notepadqq-bin"] move scratchpad
