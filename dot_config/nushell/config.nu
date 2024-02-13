@@ -771,3 +771,5 @@ alias dev  = cd ~/dev
 alias devs = cd ~/dev/stackable
 alias deve = cd ~/dev/external
 alias devo = cd ~/dev/opencore
+
+source ~/.zoxide.nu
