@@ -248,3 +248,4 @@ for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floa
 
 
 bindsym Print exec "flameshot gui"
+bindsym $mod+x move workspace to output next
