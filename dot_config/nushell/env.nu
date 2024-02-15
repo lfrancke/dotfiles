@@ -103,3 +103,5 @@ $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.krew/bin')
 
 $env.EDITOR = vim
+
+$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
