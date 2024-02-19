@@ -773,3 +773,5 @@ alias deve = cd ~/dev/external
 alias devo = cd ~/dev/opencore
 
 source ~/.zoxide.nu
+
+source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
