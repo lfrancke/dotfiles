@@ -801,4 +801,9 @@ alias devo = cd ~/dev/opencore
 source ~/.zoxide.nu
 
 source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
+
+$env.config.hooks.env_change.PWD = (
+  $env.config.hooks.env_change.PWD | append (source ~/dev/external/nu_scripts/nu-hooks/nu-hooks/direnv/config.nu)
+)
+
 source ~/.local/share/atuin/init.nu
