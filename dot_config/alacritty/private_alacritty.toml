@@ -1,4 +1,3 @@
-
 [[keyboard.bindings]]
 chars = "\u0002c"
 key = "Down"
@@ -56,5 +55,3 @@ y = 5
 
 [general]
 working_directory = "/home/lars"
-
-[terminal]

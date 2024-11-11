@@ -798,6 +798,9 @@ alias devs = cd ~/dev/stackable
 alias deve = cd ~/dev/external
 alias devo = cd ~/dev/opencore
 
+def dbash [image] { docker run -it --rm --entrypoint bash $image }
+
+
 source ~/.zoxide.nu
 
 source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
@@ -807,3 +810,5 @@ $env.config.hooks.env_change.PWD = (
 )
 
 source ~/.local/share/atuin/init.nu
+
+source completions-jj.nu
