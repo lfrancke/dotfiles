@@ -3,5 +3,6 @@
     "workbench.colorTheme": "Default Light+",
     "update.showReleaseNotes": false,
     "cmake.configureOnOpen": true,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "svelte.enable-ts-plugin": true
 }
