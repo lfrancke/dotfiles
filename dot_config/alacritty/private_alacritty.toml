@@ -1,0 +1,60 @@
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "Down"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002p"
+key = "Left"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "Right"
+mods = "Shift"
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "DecreaseFontSize"
+mods = "Control"
+mouse = 8
+
+[[mouse.bindings]]
+action = "IncreaseFontSize"
+mods = "Control"
+mouse = 9
+
+[[mouse.bindings]]
+action = "ResetFontSize"
+mods = "Shift"
+mouse = 8
+
+[[mouse.bindings]]
+action = "ResetFontSize"
+mods = "Shift"
+mouse = 9
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+
+[terminal.shell]
+args = ["-c", "zellij"]
+program = "/usr/bin/nu"
+
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 15
+y = 5
+
+[general]
+working_directory = "/home/lars"
+
+[terminal]
