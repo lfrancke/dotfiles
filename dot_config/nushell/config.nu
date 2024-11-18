@@ -788,27 +788,16 @@ $env.config = {
 }
 
 use ~/.cache/starship/init.nu
-
-
-alias ll = ls -l
-
-alias dl   = cd ~/Downloads
-alias dev  = cd ~/dev
-alias devs = cd ~/dev/stackable
-alias deve = cd ~/dev/external
-alias devo = cd ~/dev/opencore
-
-def dbash [image] { docker run -it --rm --entrypoint bash $image }
-
-
 source ~/.zoxide.nu
+source ~/.local/share/atuin/init.nu
 
-source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
+source aliases.nu
 
 $env.config.hooks.env_change.PWD = (
   $env.config.hooks.env_change.PWD | append (source ~/dev/external/nu_scripts/nu-hooks/nu-hooks/direnv/config.nu)
 )
 
-source ~/.local/share/atuin/init.nu
-
 source completions-jj.nu
+source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
+source ~/dev/external/nu_scripts/custom-completions/bat/bat-completions.nu
+source ~/dev/external/nu_scripts/custom-completions/mvn/mvn-completions.nu

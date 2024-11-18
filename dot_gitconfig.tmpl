@@ -17,6 +17,7 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+  pager = delta
 
 [svn]
   rmdir = true
@@ -48,6 +49,13 @@
 
 [merge]
   conflictStyle = zdiff3
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+
 
 {{ if eq .chezmoi.os "darwin" -}}
 [credential]
