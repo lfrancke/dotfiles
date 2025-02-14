@@ -7,6 +7,7 @@ alias deve = cd ~/dev/external
 alias devo = cd ~/dev/opencore
 
 def dbash [image] { docker run -it --rm --entrypoint bash $image }
+def kbash [image] { kubectl run (random chars --length 20 | str downcase ) --rm -it --image $image -- bash }
 
 alias cat = bat
 

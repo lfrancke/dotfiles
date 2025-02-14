@@ -792,6 +792,9 @@ source ~/.local/share/atuin/init.nu
 
 source aliases.nu
 
+# Direnv integration
+# https://github.com/direnv/direnv/blob/master/docs/hook.md#nushell
+# https://github.com/nushell/nu_scripts/blob/main/nu-hooks/nu-hooks/direnv/config.nu
 $env.config.hooks.env_change.PWD = (
   $env.config.hooks.env_change.PWD | append (source ~/dev/external/nu_scripts/nu-hooks/nu-hooks/direnv/config.nu)
 )
@@ -800,3 +803,6 @@ source completions-jj.nu
 source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
 source ~/dev/external/nu_scripts/custom-completions/bat/bat-completions.nu
 source ~/dev/external/nu_scripts/custom-completions/mvn/mvn-completions.nu
+
+source completions-bake.nu
+

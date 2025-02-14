@@ -101,6 +101,7 @@ $env.NU_PLUGIN_DIRS = [
 $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/bin')
 $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.krew/bin')
+$env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.cargo/bin')
 
 $env.EDITOR = 'vim'
 
