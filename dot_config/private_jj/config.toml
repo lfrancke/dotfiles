@@ -6,6 +6,9 @@ email = "jujutsu@lars-francke.de"
 default-command = "log"
 
 [signing]
-sign-all = true
+behavior = "own"
 backend = "ssh"
 key = "/home/lars/.ssh/id_ed25519.pub"
+
+[snapshot]
+auto-track = "none()"
