@@ -7,6 +7,9 @@
   l = log --oneline -n 20 --graph
   s = status -s
 
+[branch]
+  sort = committerdate
+
 [color]
   branch = auto
   diff = auto
@@ -14,23 +17,47 @@
   status = auto
   ui = auto
 
+[column]
+  ui = auto
+
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
   pager = delta
 
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+[help]
+  autocorrect = prompt
+
 [svn]
   rmdir = true
 
 [push]
+  autoSetupRemote = true
   default = simple
   gpgSign = if-asked
 
 [pull]
   rebase = true
 
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
 [rerere]
   enabled = true
+  autoupdate = true
 
 [init]
   defaultBranch = main
@@ -43,6 +70,7 @@
 
 [tag]
   gpgsign = true
+  sort = version:refname
 
 [gpg "ssh"]
   allowedSignersFile = ~/.ssh/allowed_signers

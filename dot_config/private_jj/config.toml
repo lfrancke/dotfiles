@@ -12,3 +12,15 @@ key = "/home/lars/.ssh/id_ed25519.pub"
 
 [snapshot]
 auto-track = "none()"
+
+[revset-aliases]
+interesting = '''
+  ancestors(reachable(
+    mine() | @,
+    mutable(),
+  ), 2)
+  | trunk() | @
+'''
+
+[revsets]
+log = "interesting"

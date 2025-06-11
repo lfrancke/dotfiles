@@ -13,3 +13,14 @@ Host github.com
 
 Host taz-dn013
   ProxyCommand ssh root@taz-nn001 -W %h:%p
+
+
+Host crc
+  Hostname 127.0.0.1
+  Port 2222
+  User core
+  IdentityFile ~/.crc/machines/crc/id_ecdsa
+  IdentityFile ~/.crc/machines/crc/id_ed25519
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+
