@@ -804,5 +804,3 @@ source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
 source ~/dev/external/nu_scripts/custom-completions/bat/bat-completions.nu
 source ~/dev/external/nu_scripts/custom-completions/mvn/mvn-completions.nu
 
-source completions-bake.nu
-
