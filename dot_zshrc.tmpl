@@ -3,8 +3,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
-source /usr/bin/switch.sh
-
 fpath+=(~/.config/hcloud/completion/zsh)
 
 # If you come from bash you might have to change your $PATH.
@@ -79,7 +77,6 @@ plugins=(
   direnv
   docker
   docker-compose
-  dotenv
   encode64
   fzf
   git

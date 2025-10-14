@@ -16,7 +16,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
     --version(-V)             # Print version
@@ -43,7 +42,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -68,7 +66,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -77,7 +74,7 @@ module completions {
     [ "always" "never" "debug" "auto" ]
   }
 
-  # Apply the reverse of given revisions on top of another revision
+  # (deprecated; use `revert`) Apply the reverse of given revisions on top of another revision
   export extern "jj backout" [
     --revisions(-r): string   # The revision(s) to apply the reverse of
     --destination(-d): string # The revision to apply the reverse changes on top of
@@ -91,7 +88,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -112,7 +108,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -138,7 +133,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -164,7 +158,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -189,7 +182,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -215,7 +207,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -236,7 +227,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -260,7 +250,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -282,7 +271,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -305,7 +293,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -338,7 +325,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -349,10 +335,10 @@ module completions {
 
   # Move existing bookmarks to target revision
   export extern "jj bookmark move" [
+    ...names: string          # Move bookmarks matching the given name patterns
     --from(-f): string        # Move bookmarks from the given revisions
     --to(-t): string          # Move bookmarks to this revision
     --allow-backwards(-B)     # Allow moving bookmarks backwards or sideways
-    ...names: string          # Move bookmarks matching the given name patterns
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -363,7 +349,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -386,7 +371,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -411,7 +395,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -433,7 +416,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -455,247 +437,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Manage bookmarks [default alias: b]
-  export extern "jj branch" [
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch create color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Create a new bookmark
-  export extern "jj branch create" [
-    --revision(-r): string    # The bookmark's target revision
-    --to: string              # The bookmark's target revision
-    ...names: string          # The bookmarks to create
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch create color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch delete color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Delete an existing bookmark and propagate the deletion to remotes on the next push
-  export extern "jj branch delete" [
-    ...names: string          # The bookmarks to delete
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch delete color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch forget color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Forget a bookmark without marking it as a deletion to be pushed
-  export extern "jj branch forget" [
-    --include-remotes         # When forgetting a local bookmark, also forget any corresponding remote bookmarks
-    ...names: string          # The bookmarks to forget
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch forget color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch list sort" [] {
-    [ "name" "name-" "author-name" "author-name-" "author-email" "author-email-" "author-date" "author-date-" "committer-name" "committer-name-" "committer-email" "committer-email-" "committer-date" "committer-date-" ]
-  }
-
-  def "nu-complete jj branch list color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # List bookmarks and their targets
-  export extern "jj branch list" [
-    --all-remotes(-a)         # Show all tracking and non-tracking remote bookmarks including the ones whose targets are synchronized with the local bookmarks
-    --remote: string          # Show all tracking and non-tracking remote bookmarks belonging to this remote
-    --tracked(-t)             # Show remote tracked bookmarks only. Omits local Git-tracking bookmarks by default
-    --conflicted(-c)          # Show conflicted bookmarks only
-    ...names: string          # Show bookmarks whose local name matches
-    --revisions(-r): string   # Show bookmarks whose local targets are in the given revisions
-    --template(-T): string    # Render each bookmark using the given template
-    --sort: string@"nu-complete jj branch list sort" # Sort bookmarks based on the given key (or multiple keys)
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch list color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch move color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Move existing bookmarks to target revision
-  export extern "jj branch move" [
-    --from(-f): string        # Move bookmarks from the given revisions
-    --to(-t): string          # Move bookmarks to this revision
-    --allow-backwards(-B)     # Allow moving bookmarks backwards or sideways
-    ...names: string          # Move bookmarks matching the given name patterns
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch move color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch rename color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Rename `old` bookmark name to `new` bookmark name
-  export extern "jj branch rename" [
-    old: string               # The old name of the bookmark
-    new: string               # The new name of the bookmark
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch rename color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch set color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Create or update a bookmark to point to a certain commit
-  export extern "jj branch set" [
-    --revision(-r): string    # The bookmark's target revision
-    --to: string              # The bookmark's target revision
-    --allow-backwards(-B)     # Allow moving the bookmark backwards or sideways
-    ...names: string          # The bookmarks to update
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch set color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch track color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Start tracking given remote bookmarks
-  export extern "jj branch track" [
-    ...names: string          # Remote bookmarks to track
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch track color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj branch untrack color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Stop tracking given remote bookmarks
-  export extern "jj branch untrack" [
-    ...names: string          # Remote bookmarks to untrack
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj branch untrack color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -704,7 +445,7 @@ module completions {
     [ "always" "never" "debug" "auto" ]
   }
 
-  # Update the description and create a new change on top
+  # Update the description and create a new change on top [default alias: ci]
   export extern "jj commit" [
     --interactive(-i)         # Interactively choose which changes to include in the first commit
     --tool: string            # Specify diff editor to be used (implies --interactive)
@@ -722,7 +463,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -743,7 +483,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -766,7 +505,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -788,7 +526,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -815,7 +552,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -838,7 +574,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -863,7 +598,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -887,7 +621,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -908,7 +641,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -930,7 +662,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -952,7 +683,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -973,7 +703,27 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug index-changed-paths color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Build changed-path index
+  export extern "jj debug index-changed-paths" [
+    --limit(-n): string       # Limit number of revisions to index
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug index-changed-paths color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -995,7 +745,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1016,34 +765,149 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
 
-  def "nu-complete jj debug operation display" [] {
-    [ "operation" "id" "view" "all" ]
-  }
-
-  def "nu-complete jj debug operation color" [] {
+  def "nu-complete jj debug object color" [] {
     [ "always" "never" "debug" "auto" ]
   }
 
   # Show information about an operation and its view
-  export extern "jj debug operation" [
-    operation?: string
-    --display: string@"nu-complete jj debug operation display"
+  export extern "jj debug object" [
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
     --at-operation: string    # Operation to load the repo at
     --at-op: string           # Operation to load the repo at
     --debug                   # Enable debug logging
-    --color: string@"nu-complete jj debug operation color" # When to colorize output
+    --color: string@"nu-complete jj debug object color" # When to colorize output
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug object commit color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  export extern "jj debug object commit" [
+    id: string
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug object commit color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug object file color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  export extern "jj debug object file" [
+    path: path
+    id: string
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug object file color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug object operation color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  export extern "jj debug object operation" [
+    id: string
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug object operation color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug object symlink color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  export extern "jj debug object symlink" [
+    path: path
+    id: string
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug object symlink color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug object tree color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  export extern "jj debug object tree" [
+    dir: path
+    id: string
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug object tree color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj debug object view color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  export extern "jj debug object view" [
+    id: string
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj debug object view color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1064,7 +928,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1076,6 +939,8 @@ module completions {
   # Evaluate revset to full commit IDs
   export extern "jj debug revset" [
     revision: string
+    --no-resolve              # Do not resolve and evaluate expression
+    --no-optimize             # Do not rewrite expression to optimized form
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -1086,7 +951,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1107,7 +971,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1129,7 +992,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1154,7 +1016,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1174,7 +1035,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1195,7 +1055,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1215,7 +1074,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1235,7 +1093,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1255,7 +1112,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1276,7 +1132,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1285,7 +1140,7 @@ module completions {
     [ "always" "never" "debug" "auto" ]
   }
 
-  # Update the change description or other metadata
+  # Update the change description or other metadata [default alias: desc]
   export extern "jj describe" [
     ...revisions_pos: string  # The revision(s) whose description to edit (default: @)
     -r: string
@@ -1293,7 +1148,7 @@ module completions {
     --stdin                   # Read the change description from stdin
     --no-edit                 # Don't open an editor
     --edit                    # Open an editor
-    --reset-author            # Reset the author to the configured user
+    --reset-author            # Reset the author name, email, and timestamp
     --author: string          # Set author to the provided string
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
@@ -1305,7 +1160,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1320,6 +1174,7 @@ module completions {
     --from(-f): string        # Show changes from this revision
     --to(-t): string          # Show changes to this revision
     ...paths: path            # Restrict the diff to these paths
+    --template(-T): string    # Render each file diff entry using the given template
     --summary(-s)             # For each path, show only whether it was modified, added, or deleted
     --stat                    # Show a histogram of the changes
     --types                   # For each path, show only its type before and after
@@ -1340,7 +1195,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1354,6 +1208,7 @@ module completions {
     --revision(-r): string    # The revision to touch up
     --from(-f): string        # Show changes from this revision
     --to(-t): string          # Edit changes in this revision
+    ...paths: path            # Edit only these paths (unmatched paths will remain unchanged)
     --tool: string            # Specify diff editor to be used
     --restore-descendants     # Preserve the content (not the diff) when rebasing descendants
     --repository(-R): path    # Path to repository to operate on
@@ -1366,7 +1221,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1394,7 +1248,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1417,7 +1270,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1428,7 +1280,7 @@ module completions {
 
   # Show how a change has evolved over time
   export extern "jj evolog" [
-    --revision(-r): string
+    --revisions(-r): string   # Follow changes from these revisions
     --limit(-n): string       # Limit number of revisions to show
     --reversed                # Show revisions in the opposite order (older revisions first)
     --no-graph                # Don't show the graph, show a flat list of revisions
@@ -1454,7 +1306,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1475,7 +1326,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1499,7 +1349,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1527,7 +1376,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1551,7 +1399,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1563,6 +1410,7 @@ module completions {
   # Print contents of files in a revision
   export extern "jj file show" [
     --revision(-r): string    # The revision to get the file contents from
+    --template(-T): string    # Render each file metadata using the given template
     ...paths: path            # Paths to print
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
@@ -1574,7 +1422,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1596,7 +1443,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1618,7 +1464,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1642,7 +1487,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1663,10 +1507,13 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
+
+  def "nu-complete jj git clone fetch_tags" [] {
+    [ "all" "included" "none" ]
+  }
 
   def "nu-complete jj git clone color" [] {
     [ "always" "never" "debug" "auto" ]
@@ -1678,7 +1525,9 @@ module completions {
     destination?: path        # Specifies the target directory for the Jujutsu repository clone. If not provided, defaults to a directory named after the last component of the source URL. The full directory path will be created if it doesn't exist
     --remote: string          # Name of the newly created remote
     --colocate                # Whether or not to colocate the Jujutsu repo with the git repo
+    --no-colocate             # Disable colocation of the Jujutsu repo with the git repo
     --depth: string           # Create a shallow clone of the given depth
+    --fetch-tags: string@"nu-complete jj git clone fetch_tags" # Configure when to fetch tags
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -1689,7 +1538,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1710,7 +1558,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1722,6 +1569,7 @@ module completions {
   # Fetch from a Git remote
   export extern "jj git fetch" [
     --branch(-b): string      # Fetch only some of the branches
+    --tracked                 # Fetch only tracked bookmarks
     --remote: string          # The remote to fetch from (only named remotes are supported, can be repeated)
     --all-remotes             # Fetch from all remotes
     --repository(-R): path    # Path to repository to operate on
@@ -1734,7 +1582,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1755,7 +1602,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1768,6 +1614,7 @@ module completions {
   export extern "jj git init" [
     destination?: path        # The destination directory where the `jj` repo will be created. If the directory does not exist, it will be created. If no directory is given, the current directory is used
     --colocate                # Specifies that the `jj` repo should also be a valid `git` repo, allowing the use of both `jj` and `git` commands in the same directory
+    --no-colocate             # Disable colocation of the Jujutsu repo with the git repo
     --git-repo: path          # Specifies a path to an **existing** git repository to be used as the backing git repo for the newly created `jj` repo
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
@@ -1779,7 +1626,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1799,7 +1645,7 @@ module completions {
     --allow-empty-description # Allow pushing commits with empty descriptions
     --allow-private           # Allow pushing commits that are private
     --revisions(-r): string   # Push bookmarks pointing to these commits (can be repeated)
-    --change(-c): string      # Push this commit by creating a bookmark based on its change ID (can be repeated)
+    --change(-c): string      # Push this commit by creating a bookmark (can be repeated)
     --named: string           # Specify a new bookmark name and a revision to push under that name, e.g. '--named myfeature=@'
     --dry-run                 # Only display what will change on the remote
     --repository(-R): path    # Path to repository to operate on
@@ -1812,7 +1658,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1833,10 +1678,13 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
+
+  def "nu-complete jj git remote add fetch_tags" [] {
+    [ "all" "included" "none" ]
+  }
 
   def "nu-complete jj git remote add color" [] {
     [ "always" "never" "debug" "auto" ]
@@ -1846,6 +1694,7 @@ module completions {
   export extern "jj git remote add" [
     remote: string            # The remote's name
     url: string               # The remote's URL or path
+    --fetch-tags: string@"nu-complete jj git remote add fetch_tags" # Configure when to fetch tags
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -1856,7 +1705,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1877,7 +1725,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1899,7 +1746,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1922,7 +1768,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1945,7 +1790,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1966,7 +1810,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -1993,7 +1836,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2027,7 +1869,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2065,7 +1906,34 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj metaedit color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Modify the metadata of a revision without changing its content
+  export extern "jj metaedit" [
+    ...revisions_pos: string  # The revision(s) to modify (default: @)
+    -r: string
+    --update-change-id        # Generate a new change-id
+    --update-author-timestamp # Update the author timestamp
+    --update-author           # Update the author to the configured user
+    --author: string          # Set author to the provided string
+    --author-timestamp: string # Set the author date to the given date either human readable, eg Sun, 23 Jan 2000 01:23:45 JST) or as a time stamp, eg 2000-01-23T01:23:45+09:00)
+    --update-committer-timestamp # Update the committer timestamp
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj metaedit color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2095,7 +1963,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2120,7 +1987,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2141,7 +2007,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2163,7 +2028,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2200,7 +2064,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2237,7 +2100,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2264,7 +2126,32 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj operation revert what" [] {
+    [ "repo" "remote-tracking" ]
+  }
+
+  def "nu-complete jj operation revert color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Create a new operation that reverts an earlier operation
+  export extern "jj operation revert" [
+    operation?: string        # The operation to revert
+    --what: string@"nu-complete jj operation revert what" # What portions of the local state to restore (can be repeated)
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj operation revert color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2277,7 +2164,9 @@ module completions {
   export extern "jj operation show" [
     operation?: string        # Show repository changes in this operation, compared to its parent(s)
     --no-graph                # Don't show the graph, show a flat list of modified changes
+    --template(-T): string    # Render the operation using the given template
     --patch(-p)               # Show patch of modifications to changes
+    --no-op-diff              # Do not show operation diff
     --summary(-s)             # For each path, show only whether it was modified, added, or deleted
     --stat                    # Show a histogram of the changes
     --types                   # For each path, show only its type before and after
@@ -2298,7 +2187,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2311,9 +2199,9 @@ module completions {
     [ "always" "never" "debug" "auto" ]
   }
 
-  # Create a new operation that undoes an earlier operation
+  # Create a new operation that reverts an earlier operation
   export extern "jj operation undo" [
-    operation?: string        # The operation to undo
+    operation?: string        # The operation to revert
     --what: string@"nu-complete jj operation undo what" # What portions of the local state to restore (can be repeated)
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
@@ -2325,7 +2213,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2347,7 +2234,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2372,7 +2258,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2391,8 +2276,8 @@ module completions {
     --after: string           # The revision(s) to insert after (can be repeated to create a merge commit)
     --insert-before(-B): string # The revision(s) to insert before (can be repeated to create a merge commit)
     --before: string          # The revision(s) to insert before (can be repeated to create a merge commit)
-    --skip-empty              # Deprecated. Use --skip-emptied instead
     --skip-emptied            # If true, when rebasing would produce an empty commit, the commit is abandoned. It will not be abandoned if it was already empty before the rebase. Will never skip merge commits with multiple non-empty parents
+    --keep-divergent          # Keep divergent commits while rebasing
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -2403,7 +2288,26 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj redo color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Redo the most recently undone operation
+  export extern "jj redo" [
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj redo color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2428,7 +2332,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2458,7 +2361,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2485,7 +2387,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2506,7 +2407,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2531,7 +2431,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2553,9 +2452,9 @@ module completions {
     --color-words             # Show a word-level diff with changes indicated only by color
     --tool: string            # Generate diff by external command
     --context: string         # Number of lines of context to show
-    --ignore-all-space        # Ignore whitespace when comparing lines
-    --ignore-space-change     # Ignore changes in amount of whitespace when comparing lines
     --no-patch                # Do not show the patch
+    --ignore-all-space(-w)    # Ignore whitespace when comparing lines
+    --ignore-space-change(-b) # Ignore changes in amount of whitespace when comparing lines
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -2566,7 +2465,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2589,7 +2487,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2612,7 +2509,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2633,7 +2529,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2654,7 +2549,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2675,7 +2569,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2696,7 +2589,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2720,7 +2612,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2734,8 +2625,14 @@ module completions {
     --interactive(-i)         # Interactively choose which parts to split
     --tool: string            # Specify diff editor to be used (implies --interactive)
     --revision(-r): string    # The revision to split
+    --destination(-d): string # The revision(s) to base the new revision onto (can be repeated to create a merge commit)
+    --insert-after(-A): string # The revision(s) to insert after (can be repeated to create a merge commit)
+    --after: string           # The revision(s) to insert after (can be repeated to create a merge commit)
+    --insert-before(-B): string # The revision(s) to insert before (can be repeated to create a merge commit)
+    --before: string          # The revision(s) to insert before (can be repeated to create a merge commit)
+    --message(-m): string     # The change description to use (don't open editor)
     --parallel(-p)            # Split the revision into two parallel revisions instead of a parent and child
-    ...paths: path            # Files matching any of these filesets are put in the first commit
+    ...paths: path            # Files matching any of these filesets are put in the selected changes
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -2746,7 +2643,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2757,10 +2653,15 @@ module completions {
 
   # Move changes from a revision into another revision
   export extern "jj squash" [
-    --revision(-r): string    # Revision to squash into its parent (default: @)
+    --revision(-r): string    # Revision to squash into its parent (default: @). Incompatible with the experimental `-d`/`-A`/`-B` options
     --from(-f): string        # Revision(s) to squash from (default: @)
     --into(-t): string        # Revision to squash into (default: @)
     --to: string              # Revision to squash into (default: @)
+    --destination(-d): string # (Experimental) The revision(s) to use as parent for the new commit (can be repeated to create a merge commit)
+    --insert-after(-A): string # (Experimental) The revision(s) to insert the new commit after (can be repeated to create a merge commit)
+    --after: string           # (Experimental) The revision(s) to insert the new commit after (can be repeated to create a merge commit)
+    --insert-before(-B): string # (Experimental) The revision(s) to insert the new commit before (can be repeated to create a merge commit)
+    --before: string          # (Experimental) The revision(s) to insert the new commit before (can be repeated to create a merge commit)
     --message(-m): string     # The description to use for squashed revision (don't open editor)
     --use-destination-message(-u) # Use the description of the destination revision and discard the description(s) of the source revision(s)
     --interactive(-i)         # Interactively choose which parts to squash
@@ -2777,7 +2678,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2786,7 +2686,7 @@ module completions {
     [ "always" "never" "debug" "auto" ]
   }
 
-  # Show high-level repo status
+  # Show high-level repo status [default alias: st]
   export extern "jj status" [
     ...paths: path            # Restrict the status display to these paths
     --repository(-R): path    # Path to repository to operate on
@@ -2799,7 +2699,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2820,7 +2719,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -2843,166 +2741,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Infrequently used commands such as for generating shell completions
-  export extern "jj util" [
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util completion shell" [] {
-    [ "bash" "elvish" "fish" "nushell" "power-shell" "zsh" ]
-  }
-
-  def "nu-complete jj util completion color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Print a command-line-completion script
-  export extern "jj util completion" [
-    shell?: string@"nu-complete jj util completion shell"
-    --bash                    # Deprecated. Use the SHELL positional argument instead
-    --fish                    # Deprecated. Use the SHELL positional argument instead
-    --zsh                     # Deprecated. Use the SHELL positional argument instead
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util completion color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util config-schema color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Print the JSON schema for the jj TOML config format
-  export extern "jj util config-schema" [
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util config-schema color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util exec color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Execute an external command via jj
-  export extern "jj util exec" [
-    command: string           # External command to execute
-    ...args: string           # Arguments to pass to the external command
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util exec color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util gc color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Run backend-dependent garbage collection
-  export extern "jj util gc" [
-    --expire: string          # Time threshold
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util gc color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util install-man-pages color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Install Jujutsu's manpages to the provided path
-  export extern "jj util install-man-pages" [
-    path: path                # The path where manpages will installed. An example path might be `/usr/share/man`. The provided path will be appended with `man1`, etc., as appropriate
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util install-man-pages color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
-    --config-file: path       # Additional configuration files (can be repeated)
-    --help(-h)                # Print help (see more with '--help')
-  ]
-
-  def "nu-complete jj util markdown-help color" [] {
-    [ "always" "never" "debug" "auto" ]
-  }
-
-  # Print the CLI help for all subcommands in Markdown
-  export extern "jj util markdown-help" [
-    --repository(-R): path    # Path to repository to operate on
-    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
-    --ignore-immutable        # Allow rewriting immutable commits
-    --at-operation: string    # Operation to load the repo at
-    --at-op: string           # Operation to load the repo at
-    --debug                   # Enable debug logging
-    --color: string@"nu-complete jj util markdown-help color" # When to colorize output
-    --quiet                   # Silence non-primary command output
-    --no-pager                # Disable the pager
-    --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3015,10 +2753,10 @@ module completions {
     [ "always" "never" "debug" "auto" ]
   }
 
-  # Undo an operation (shortcut for `jj op undo`)
+  # Undo the last operation
   export extern "jj undo" [
-    operation?: string        # The operation to undo
-    --what: string@"nu-complete jj undo what" # What portions of the local state to restore (can be repeated)
+    operation?: string        # (deprecated, use `jj op revert <operation>`)
+    --what: string@"nu-complete jj undo what" # (deprecated, use `jj op revert --what`)
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -3029,7 +2767,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3051,7 +2788,155 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Infrequently used commands such as for generating shell completions
+  export extern "jj util" [
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util completion shell" [] {
+    [ "bash" "elvish" "fish" "nushell" "power-shell" "zsh" ]
+  }
+
+  def "nu-complete jj util completion color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Print a command-line-completion script
+  export extern "jj util completion" [
+    shell: string@"nu-complete jj util completion shell"
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util completion color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util config-schema color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Print the JSON schema for the jj TOML config format
+  export extern "jj util config-schema" [
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util config-schema color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util exec color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Execute an external command via jj
+  export extern "jj util exec" [
+    command: string           # External command to execute
+    ...args: path             # Arguments to pass to the external command
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util exec color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util gc color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Run backend-dependent garbage collection
+  export extern "jj util gc" [
+    --expire: string          # Time threshold
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util gc color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util install-man-pages color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Install Jujutsu's manpages to the provided path
+  export extern "jj util install-man-pages" [
+    path: path                # The path where manpages will installed. An example path might be `/usr/share/man`. The provided path will be appended with `man1`, etc., as appropriate
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util install-man-pages color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
+    --config-file: path       # Additional configuration files (can be repeated)
+    --help(-h)                # Print help (see more with '--help')
+  ]
+
+  def "nu-complete jj util markdown-help color" [] {
+    [ "always" "never" "debug" "auto" ]
+  }
+
+  # Print the CLI help for all subcommands in Markdown
+  export extern "jj util markdown-help" [
+    --repository(-R): path    # Path to repository to operate on
+    --ignore-working-copy     # Don't snapshot the working copy, and don't update it
+    --ignore-immutable        # Allow rewriting immutable commits
+    --at-operation: string    # Operation to load the repo at
+    --at-op: string           # Operation to load the repo at
+    --debug                   # Enable debug logging
+    --color: string@"nu-complete jj util markdown-help color" # When to colorize output
+    --quiet                   # Silence non-primary command output
+    --no-pager                # Disable the pager
+    --config: string          # Additional configuration options (can be repeated)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3072,7 +2957,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3093,7 +2977,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3108,7 +2991,7 @@ module completions {
 
   # Add a workspace
   export extern "jj workspace add" [
-    destination: string       # Where to create the new workspace
+    destination: path         # Where to create the new workspace
     --name: string            # A name for the workspace
     --revision(-r): string    # A list of parent revisions for the working-copy commit of the newly created workspace. You may specify nothing, or any number of parents
     --sparse-patterns: string@"nu-complete jj workspace add sparse_patterns" # How to handle sparse patterns when creating a new workspace
@@ -3122,7 +3005,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3144,7 +3026,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3155,6 +3036,7 @@ module completions {
 
   # List workspaces
   export extern "jj workspace list" [
+    --template(-T): string    # Render each workspace using the given template
     --repository(-R): path    # Path to repository to operate on
     --ignore-working-copy     # Don't snapshot the working copy, and don't update it
     --ignore-immutable        # Allow rewriting immutable commits
@@ -3165,7 +3047,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3187,7 +3068,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3208,7 +3088,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
@@ -3229,7 +3108,6 @@ module completions {
     --quiet                   # Silence non-primary command output
     --no-pager                # Disable the pager
     --config: string          # Additional configuration options (can be repeated)
-    --config-toml: string     # Additional configuration options (can be repeated) (DEPRECATED)
     --config-file: path       # Additional configuration files (can be repeated)
     --help(-h)                # Print help (see more with '--help')
   ]
