@@ -17,3 +17,25 @@ export BW_SESSION= ... <as printed by bw unlock>
 ----
 
 This is meant to work in tandem with my https://github.com/lfrancke/arch-setup/[arch-setup] repository which deals with all the system level stuff while these dotfiles are all user local.
+
+== Post-Installation Steps
+
+
+== Maintenance
+
+=== Updating Neovim Plugins
+
+To keep your Neovim plugins up to date, run:
+
+----
+:Lazy sync
+----
+
+This will install missing plugins, update existing ones, and clean up removed plugins.
+
+Other useful commands:
+
+* `:Lazy` - Open the lazy.nvim UI to see plugin status
+* `:Lazy update` - Update all plugins
+* `:Lazy clean` - Remove plugins no longer in config
+* `:Lazy health` - Check for issues

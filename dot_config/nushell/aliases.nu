@@ -1,5 +1,8 @@
 alias ll = ls -l
 
+alias vim = nvim
+alias vi = nvim
+
 alias dl   = cd ~/Downloads
 alias dev  = cd ~/dev
 alias devs = cd ~/dev/stackable

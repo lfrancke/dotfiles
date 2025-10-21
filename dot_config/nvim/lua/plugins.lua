@@ -1,65 +1,71 @@
-return require('packer').startup(function(use)
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-  -- Packer can manage itself
-  use('wbthomason/packer.nvim')
-
-  
-
+-- Plugin specifications
+return require('lazy').setup({
   -- Common configuration stuff for the built-in LSP client
-  use('neovim/nvim-lspconfig')
+  'neovim/nvim-lspconfig',
 
-  use {
-    'simrat39/rust-tools.nvim',
-    config = function()
-      require('rust-tools').setup({})
-    end
-  }
-    
+  -- Rust support (modern replacement for rust-tools.nvim)
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6',
+    lazy = false,
+  },
 
   -- Completion framework
-  use('hrsh7th/nvim-cmp')
-  
+  'hrsh7th/nvim-cmp',
+
   -- Completion sources for nvim-cmp
-  use('hrsh7th/cmp-nvim-lsp')
-  use('hrsh7th/cmp-path')
-  use('hrsh7th/cmp-buffer')
-  use('hrsh7th/cmp-cmdline')
-  use('saadparwaiz1/cmp_luasnip')
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-cmdline',
+  'saadparwaiz1/cmp_luasnip',
 
   -- Fuzzy finder
-  use('nvim-lua/plenary.nvim')
-  use('nvim-telescope/telescope.nvim')
-  
-  -- Color scheme
-  use('shaunsingh/nord.nvim')
-  
-  -- Keyboard navigation
-  use('ggandor/lightspeed.nvim')
-  
-  use('L3MON4D3/LuaSnip')
-  
-  -- File tree plugin and icons for file types
-  use {
-  'kyazdani42/nvim-tree.lua',
-  requires = {
-    'kyazdani42/nvim-web-devicons', -- optional, for file icons
-  },
-}
-  
-  -- Java LSP bindings
-  -- TODO: Plug 'mfussenegger/nvim-jdtls'
-  
-  -- Plugin to show all open buffers
-  use {
-    'akinsho/bufferline.nvim',
-    branch = "main",
-    requires = 'kyazdani42/nvim-web-devicons'
-  }
+  'nvim-lua/plenary.nvim',
+  'nvim-telescope/telescope.nvim',
 
-  -- Requires neovim 0.6
-  use {
+  -- Color scheme
+  'shaunsingh/nord.nvim',
+
+  -- Keyboard navigation
+  'ggandor/lightspeed.nvim',
+
+  'L3MON4D3/LuaSnip',
+
+  -- File tree plugin and icons for file types
+  {
+    'kyazdani42/nvim-tree.lua',
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+    },
+  },
+
+  -- Java LSP bindings
+  -- TODO: 'mfussenegger/nvim-jdtls'
+
+  -- Plugin to show all open buffers
+  {
+    'akinsho/bufferline.nvim',
+    dependencies = 'kyazdani42/nvim-web-devicons'
+  },
+
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({
         ensure_installed = { "rust" },
@@ -73,42 +79,40 @@ return require('packer').startup(function(use)
           enable = true
         }
       })
-
     end
-  }
-  
+  },
+
   -- Statusline
-  use('famiu/feline.nvim')
+  'famiu/feline.nvim',
 
   -- Git "annotations" (has integration with feline)
   -- Disabled because I received an error with 0.6 nightly
   --[[
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim'
     },
     config = function()
       require('gitsigns').setup()
-end
-  } --]]
+    end
+  },
+  --]]
 
   -- Indentation guidelines
-  use {
+  {
     'lukas-reineke/indent-blankline.nvim',
     --    config = function()
      -- require('indent_blankline').setup({
       --  show_current_context = true
 --      })
  --   end
-  }
+  },
 
-  use {
+  {
     'VonHeikemen/searchbox.nvim',
-    requires = {
-      { 'MunifTanjim/nui.nvim' }
+    dependencies = {
+      'MunifTanjim/nui.nvim'
     }
-  }
-
-end)
-
+  },
+})
