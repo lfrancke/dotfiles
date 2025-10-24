@@ -6,8 +6,6 @@
   // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   "spacing": 4,
-  // Gaps between modules (4px)
-  // Choose the order of the modules
   "modules-left": [
     "niri/workspaces",
     "niri/window"
@@ -18,6 +16,7 @@
   "modules-right": [
     "pulseaudio",
     "network",
+    "bluetooth",
     "power-profiles-daemon",
     "cpu",
     "memory",
@@ -28,31 +27,16 @@
     "tray",
     "custom/power"
   ],
-  "mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-    "unknown-tag": "N/A",
-    "interval": 5,
-    "consume-icons": {
-      "on": " "
-    },
-    "random-icons": {
-      "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " "
-    },
-    "repeat-icons": {
-      "on": " "
-    },
-    "single-icons": {
-      "on": "1 "
-    },
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)"
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "chat": ""
+    }
+  },
+  "niri/window": {
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "🌎 $1"
+    }
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -63,14 +47,13 @@
   },
   "tray": {
     // "icon-size": 21,
-    "spacing": 10,
+    "spacing": 10
     // "icons": {
     //   "blueman": "bluetooth",
     //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
     // }
   },
   "clock": {
-    // "timezone": "America/New_York",
     "format": "{:%H:%M %Y-%m-%d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%H:%M}"
@@ -130,9 +113,6 @@
       ""
     ]
   },
-  "battery#bat2": {
-    "bat": "BAT2"
-  },
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -145,16 +125,15 @@
     }
   },
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
+    "interval": 10,
+    "format-wifi": "{essid} ({signalStrength}%) |  {bandwidthUpBytes} /  {bandwidthDownBytes} ",
+    "format-ethernet": "{ipaddr}/{cidr} |  {bandwidthUpBytes} /  {bandwidthDownBytes} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
     "format": "{volume}% {icon} {format_source}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
@@ -176,6 +155,14 @@
     },
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {num_connections} connected",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "overskride"
   },
   "custom/notification": {
     "tooltip": true,
