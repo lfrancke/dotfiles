@@ -23,6 +23,7 @@
     "temperature",
     "backlight",
     "battery",
+    "custom/sunsetr",
     "custom/notification",
     "tray",
     "custom/power"
@@ -163,6 +164,14 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "overskride"
+  },
+  "custom/sunsetr": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/sunsetr-toggle.sh status",
+    "on-click": "~/.config/waybar/scripts/sunsetr-toggle.sh toggle && pkill -RTMIN+8 waybar",
+    "interval": 5,
+    "tooltip": true
   },
   "custom/notification": {
     "tooltip": true,

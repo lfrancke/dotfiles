@@ -1,0 +1,18 @@
+@import url("file:///etc/xdg/waybar/style.css")
+
+#custom-notification {
+  font-family: "NotoSansMono Nerd Font";
+  background-color: #2980b9;
+  padding: 0 10px;
+}
+
+#custom-sunsetr.active {
+  color: #f39c12;
+  background-color: rgba(243, 156, 18, 0.2);
+  padding: 0 10px;
+}
+
+#custom-sunsetr.disabled {
+  color: #95a5a6;
+  padding: 0 10px;
+}
