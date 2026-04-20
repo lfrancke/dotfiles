@@ -1,6 +1,8 @@
 README.adoc
 Makefile
 .idea
+.claude
+.claude/**
 
 {{- if ne .chezmoi.os "linux" }}
 .config/bspwm
