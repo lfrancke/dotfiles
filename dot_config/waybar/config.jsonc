@@ -171,6 +171,7 @@
     "exec": "~/.config/waybar/scripts/sunsetr-toggle.sh status",
     "on-click": "~/.config/waybar/scripts/sunsetr-toggle.sh toggle && pkill -RTMIN+8 waybar",
     "interval": 5,
+    "signal": 8,
     "tooltip": true
   },
   "custom/notification": {

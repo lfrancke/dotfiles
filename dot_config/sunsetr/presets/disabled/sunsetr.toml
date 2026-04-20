@@ -1,4 +1,5 @@
 # Disabled preset — no blue light filtering
-# Forces daylight color temperature at all times
-night_temp = 6500
-night_gamma = 100
+# Uses static mode at daylight temperature so no location is needed
+transition_mode = "static"
+static_temp = 6500
+static_gamma = 100

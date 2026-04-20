@@ -5,9 +5,9 @@ is_running() {
     pgrep -x sunsetr > /dev/null
 }
 
-# Read currently active preset (empty string = base config)
+# Read currently active preset name (e.g. "default" or a preset name)
 active_preset() {
-    sunsetr preset active 2>/dev/null | grep -oP 'Active preset:\s*\K\S+' || echo ""
+    sunsetr preset active 2>/dev/null | tr -d '[:space:]'
 }
 
 toggle() {
