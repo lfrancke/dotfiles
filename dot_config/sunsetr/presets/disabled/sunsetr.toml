@@ -1,0 +1,4 @@
+# Disabled preset — no blue light filtering
+# Forces daylight color temperature at all times
+night_temp = 6500
+night_gamma = 100

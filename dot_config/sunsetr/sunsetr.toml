@@ -1,55 +1,29 @@
-# Sunsetr Configuration
-# Automatic blue light filter for Wayland compositors
+#[Backend]
+backend = "auto"         # Backend to use: "auto", "hyprland", "hyprsunset" or "wayland"
+transition_mode = "geo"  # Select: "geo", "finish_by", "start_at", "center", "static"
 
-[general]
-# Transition mode: "geo" (location-based), "static", "finish_by", "start_at", "center"
-transition_mode = "geo"
+#[Smoothing]
+smoothing = true
+startup_duration = 0.5
+shutdown_duration = 0.5
+adaptive_interval = 1
 
-# Backend: "hyprland", "wayland", or "hyprsunset"
-# For niri, use "wayland" backend
-backend = "wayland"
+#[Time-based config]
+night_temp = 3300
+day_temp = 6500
+night_gamma = 90
+day_gamma = 100
+update_interval = 60
 
-# Smooth transition duration in seconds (0.1-60)
-transition_duration = 3.0
+#[Static config]
+static_temp = 6500
+static_gamma = 100
 
-[temperatures]
-# Color temperature in Kelvin (1000-20000)
-# Lower values = warmer (more red), higher values = cooler (more blue)
-day = 6500    # Standard daylight
-night = 3300  # Warm evening light
+#[Manual transitions]
+sunset = "19:00:00"
+sunrise = "06:00:00"
+transition_duration = 45
 
-[gamma]
-# Gamma adjustment percentage (10-100)
-day = 100
-night = 100
-
-[location]
-# Geographic coordinates for sunrise/sunset calculation
-# Will auto-detect from system timezone if not specified
-# Uncomment and set your coordinates for more accurate times:
-# latitude = 0.0
-# longitude = 0.0
-
-# You can also run 'sunsetr geo' to interactively select your city
-
-[presets]
-# Custom presets you can switch to with 'sunsetr preset <name>'
-# Useful for gaming, movies, or other activities
-
-[presets.disabled]
-# Disabled preset - keeps normal daylight temperature at all times
-day = 6500
-night = 6500  # Same as day = disabled
-
-[presets.default]
-# Default preset - normal blue light filtering
-day = 6500
-night = 3300
-
-# [presets.gaming]
-# day = 6500
-# night = 6500  # Disable night mode for gaming
-
-# [presets.reading]
-# day = 6500
-# night = 2700  # Extra warm for reading
+#[Geolocation]
+latitude = 53.550000
+longitude = 10.000000

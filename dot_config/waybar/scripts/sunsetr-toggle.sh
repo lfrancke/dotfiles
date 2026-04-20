@@ -1,73 +1,42 @@
 #!/usr/bin/env bash
-# Waybar module for toggling sunsetr using presets
+# Waybar module for toggling sunsetr via presets
 
-STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/sunsetr-preset-state"
-
-# Check if sunsetr is running
 is_running() {
     pgrep -x sunsetr > /dev/null
 }
 
-# Get current preset state
-get_state() {
-    if [ -f "$STATE_FILE" ]; then
-        cat "$STATE_FILE"
-    else
-        echo "default"
-    fi
+# Read currently active preset (empty string = base config)
+active_preset() {
+    sunsetr preset active 2>/dev/null | grep -oP 'Active preset:\s*\K\S+' || echo ""
 }
 
-# Set preset state
-set_state() {
-    echo "$1" > "$STATE_FILE"
-}
-
-# Toggle between default and disabled presets
 toggle() {
-    # Make sure sunsetr is running
     if ! is_running; then
-        sunsetr &
+        nohup sunsetr > /dev/null 2>&1 & disown
         sleep 0.5
     fi
 
-    current=$(get_state)
-
-    if [ "$current" = "default" ]; then
-        # Switch to disabled preset
-        sunsetr preset disabled
-        set_state "disabled"
-    else
-        # Switch to default preset
+    if [ "$(active_preset)" = "disabled" ]; then
         sunsetr preset default
-        set_state "default"
+    else
+        sunsetr preset disabled
     fi
 }
 
-# Get status for waybar
 status() {
     if ! is_running; then
-        # Sunsetr not running
         echo '{"text": "󰖔", "tooltip": "Sunsetr: Not running", "class": "disabled"}'
-        set_state "default"
         return
     fi
 
-    current=$(get_state)
-
-    if [ "$current" = "default" ]; then
-        # Blue light filter is active
-        echo '{"text": "󰖔", "tooltip": "Sunsetr: Active (filtering blue light)", "class": "active"}'
-    else
-        # Blue light filter is disabled
+    if [ "$(active_preset)" = "disabled" ]; then
         echo '{"text": "󰖔", "tooltip": "Sunsetr: Disabled (no filtering)", "class": "disabled"}'
+    else
+        echo '{"text": "󰖔", "tooltip": "Sunsetr: Active (filtering blue light)", "class": "active"}'
     fi
 }
 
 case "$1" in
-    toggle)
-        toggle
-        ;;
-    status|*)
-        status
-        ;;
+    toggle) toggle ;;
+    status|*) status ;;
 esac
