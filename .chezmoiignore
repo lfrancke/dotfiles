@@ -10,3 +10,7 @@ Makefile
 .Xresources.d/
 .xinitrc
 {{- end }}
+
+{{- if not (env "BW_SESSION") }}
+.ssh/id_ed25519
+{{- end }}
