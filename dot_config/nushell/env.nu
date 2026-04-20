@@ -3,7 +3,7 @@
 # version = "0.88.1"
 
 def create_left_prompt [] {
-    let home =  $nu.home-path
+    let home =  $nu.home-dir
 
     # Perform tilde substitution on dir
     # To determine if the prefix of the path matches the home dir, we split the current path into
@@ -103,6 +103,6 @@ $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.krew/bin')
 $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.cargo/bin')
 
-$env.EDITOR = 'vim'
+$env.EDITOR = 'nvim'
 
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
