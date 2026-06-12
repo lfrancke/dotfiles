@@ -804,3 +804,5 @@ source ~/dev/external/nu_scripts/custom-completions/git/git-completions.nu
 source ~/dev/external/nu_scripts/custom-completions/bat/bat-completions.nu
 source ~/dev/external/nu_scripts/custom-completions/mvn/mvn-completions.nu
 
+
+use ($nu.default-config-dir | path join mise.nu)

@@ -106,3 +106,6 @@ $env.PATH = ($env.PATH | split row (char esep) | append '/home/lars/.cargo/bin')
 $env.EDITOR = 'nvim'
 
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+
+let mise_path = $nu.default-config-dir | path join mise.nu
+^mise activate nu | save $mise_path --force
