@@ -9,3 +9,5 @@ logs/
 .vagrant/
  *.pyc
 .svn
+
+**/.claude/settings.local.json
