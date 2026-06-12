@@ -792,11 +792,18 @@ source ~/.local/share/atuin/init.nu
 
 source aliases.nu
 
-# Direnv integration
+# Direnv integration, inlined because upstream removed the nu_scripts example
+# (nushell/nu_scripts#1084) that this used to source.
 # https://github.com/direnv/direnv/blob/master/docs/hook.md#nushell
-# https://github.com/nushell/nu_scripts/blob/main/nu-hooks/nu-hooks/direnv/config.nu
 $env.config.hooks.env_change.PWD = (
-  $env.config.hooks.env_change.PWD | append (source ~/dev/external/nu_scripts/nu-hooks/nu-hooks/direnv/config.nu)
+  $env.config.hooks.env_change.PWD | append { ||
+    if (which direnv | is-empty) {
+      return
+    }
+    direnv export json | from json | default {} | load-env
+    # direnv exports PATH as a string, nushell needs a list
+    $env.PATH = $env.PATH | split row (char env_sep)
+  }
 )
 
 source completions-jj.nu
