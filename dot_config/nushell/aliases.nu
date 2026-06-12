@@ -9,6 +9,10 @@ alias devs = cd ~/dev/stackable
 alias deve = cd ~/dev/external
 alias devo = cd ~/dev/opencore
 
+# Run Claude Code inside the nono sandbox (claude-code-custom profile).
+# Alias (not def) so flags like `--resume` forward through to claude.
+alias noclaude = nono run --profile claude-code-custom -- claude
+
 def dbash [image] { docker run -it --rm --entrypoint bash $image }
 def kbash [image] { kubectl run (random chars --length 20 | str downcase ) --rm -it --image $image -- bash }
 

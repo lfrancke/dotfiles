@@ -3,27 +3,23 @@
   "extends": "claude-code",
   "filesystem": {
     "read": [
-	    "/opt/claude-code",
-	    "/usr/include",
-	    "$HOME/.config/jj",
-	    "$HOME/.config/npm"
+      "/opt/claude-code",
+      "/usr/include",
+      "$HOME/.config/jj",
+      "$HOME/.config/npm",
+      "$HOME/.cargo/bin"
     ],
     "read_file": [
-	    "$HOME/.gitignore",
-	    "$HOME/.ssh/id_ed25519.pub",
-	    "/etc/passwd",
-	    "/proc/1/mountinfo"
+      "$HOME/.gitignore",
+      "$HOME/.ssh/id_ed25519.pub",
+      "/etc/passwd",
+      "/proc/1/mountinfo"
     ],
     "allow": [
-	    "$HOME/.cargo",
-	    "$HOME/.npm",
-	    "$HOME/.cache/pre-commit"
-    ],
-    "allow_file": [
-	    "$HOME/.claude.json"
+      "$HOME/.cargo/registry",
+      "$HOME/.cargo/git",
+      "$HOME/.npm",
+      "$HOME/.cache/pre-commit"
     ]
-  },
-  "workdir": {
-	  "access": "readwrite"
   }
 }
