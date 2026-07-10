@@ -108,4 +108,6 @@ $env.EDITOR = 'nvim'
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
 
 let mise_path = $nu.default-config-dir | path join mise.nu
-^mise activate nu | save $mise_path --force
+# `str replace` works around a deprecation warning fixed in mise 2026.7.5
+# (jdx/mise#10778); drop it once Arch ships that version. No-op afterwards.
+^mise activate nu | str replace --all 'str upcase' 'str uppercase' | save $mise_path --force

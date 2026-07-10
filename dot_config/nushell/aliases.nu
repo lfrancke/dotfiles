@@ -14,7 +14,7 @@ alias devo = cd ~/dev/opencore
 alias noclaude = nono run --profile claude-code-custom -- claude
 
 def dbash [image] { docker run -it --rm --entrypoint bash $image }
-def kbash [image] { kubectl run (random chars --length 20 | str downcase ) --rm -it --image $image -- bash }
+def kbash [image] { kubectl run (random chars --length 20 | str lowercase ) --rm -it --image $image -- bash }
 
 alias cat = bat
 
