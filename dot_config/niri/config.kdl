@@ -9,8 +9,11 @@ input {
     disable-power-key-handling
     keyboard {
         xkb {
-            layout "de"
-            variant "neo"
+            // Layout 0: de(neo) for built-in/normal keyboards.
+            // Layout 1: plain de for the Corne (firmware does Noted on de keycodes).
+            // Switch with: niri msg action switch-layout 0|1 (no per-device support yet, niri#371)
+            layout "de,de"
+            variant "neo,"
         }
     }
 
