@@ -1,0 +1,135 @@
+{
+  // Personal layer on top of stackable. Seeded once by install.sh into
+  // ~/.config/nono/profiles/dev.jsonc — never committed. Convenience rules only;
+  // anything here widens what the agent can touch on YOUR machine, so keep it minimal.
+  "extends": "stackable",
+
+  "meta": {
+    "name": "dev",
+    "description": "Personal layer on top of stackable"
+  },
+
+  "filesystem": {
+    "allow": [
+      // prek/pre-commit bootstrap their hook envs across these. NOT all of ~/.cache:
+      // deny_browser_data_linux covers ~/.config/google-chrome and ~/.mozilla/firefox
+      // but NOT ~/.cache/mozilla or ~/.cache/google-chrome, and ~/.cache/yay holds
+      // AUR build trees for packages that get installed as root.
+      "$HOME/.cache/pre-commit",
+      "$HOME/.cache/virtualenv",
+      "$HOME/.cache/uv",
+      "$HOME/.cache/pip",
+      // npm needs rw for _logs and _cacache; the base pack's node_runtime group
+      // grants read only, which breaks npx.
+      "$HOME/.npm",
+      // jj creates a per-repo config dir under ~/.config/jj/repos/<hash> on first
+      // use, so read-only here meant existing repos worked and new ones failed with
+      // "Failed to determine the secure config for a repo".
+      "$HOME/.config/jj"
+    ],
+    "read": [
+      // Claude Code itself: Arch package `claude-code` installs to /opt, which no
+      // base-pack group covers (it assumes ~/.local/share/claude). Without this the
+      // /usr/bin/claude wrapper can't exec the real binary ("Permission denied").
+      "/opt/claude-code",
+      "/usr/include", // C headers for cc/bindgen builds
+      // All sibling checkouts, read-only (the workdir grant still gives rw to
+      // whatever dir you launch in). NOTE: this includes ~/dev/kunden — the agent
+      // can read customer material from any session. Narrow to single repos if
+      // that ever matters.
+      "$HOME/dev"
+    ],
+    "read_file": [
+      "$HOME/.gitignore", // core.excludesfile; the git_config group only has ~/.gitignore_global
+      "$HOME/.ssh/id_ed25519.pub",
+      // Still needed: without it `whoami`, `id -un`, `getent passwd` and Node's
+      // os.userInfo() all fail (getpwuid is blocked). World-readable, no hashes
+      // (those live in /etc/shadow, which stays denied).
+      "/etc/passwd"
+      // Dropped /proc/1/mountinfo — verified readable without any grant on this
+      // kernel, so the rule was a no-op. (`nono why` claims DENIED for it, but an
+      // actual read inside the sandbox succeeds.)
+    ]
+  },
+
+  // ── GitHub ─────────────────────────────────────────────────────────────────
+  //
+  // Needs a fine-grained PAT in the keyring (service `nono`, account
+  // `github_agent_token`) with Contents: read+write, Pull requests: read+write,
+  // Actions: read, Metadata: read. The agent never sees it — the proxy injects it,
+  // and inside the sandbox $GH_TOKEN is a phantom value.
+  //
+  // THE PAT'S OWN PERMISSIONS ARE THE BOUNDARY. There is no endpoint filtering on
+  // the API route, deliberately. An earlier version of this file carried an
+  // `endpoint_rules` allow-list intended to permit pushes and PR-opening while
+  // denying merges. Removed 2026-08-01 because it did not work and cost real time:
+  //
+  //   * It never blocked merging. `gh pr merge` goes through POST /graphql, which
+  //     had to stay allowed or `gh pr`/`gh issue`/`gh repo view` all break. Verified:
+  //     `gh pr merge <n>` reached GitHub and failed only because the PR didn't exist.
+  //   * It broke unrelated writes. Anything not enumerated — POST /markdown,
+  //     PUT /repos/*/*/contents/*, POST /repos/*/*/git/refs — silently lost its
+  //     credential and came back as GitHub 401 "Bad credentials".
+  //   * It was undiagnosable. `endpoint_rules` doesn't reject the request, it
+  //     forwards it minus the token, so nothing appears in `nono audit` (the session
+  //     logs `completed` / `decision: allow`) and it presents exactly as a bad token.
+  //     `command_policies`' `endpoint_policy` returns a real nono 403 instead — but
+  //     that puts `gh` in a tool-sandbox where it can no longer exec `git`.
+  //
+  // So: to actually stop the agent merging, narrow the PAT (Pull requests: read),
+  // don't filter paths. That also costs PR-opening — GitHub can't separate the two.
+  //
+  // Two routes:
+  //   1. `github`     — the API. Defined in stackable.jsonc; not overridden here.
+  //   2. `github-git` — git-over-HTTPS, restricted to the smart-HTTP endpoints so
+  //                     this token can't be used for anything else on github.com.
+  // Plus GIT_CONFIG_* below, which rewrites SSH remotes to HTTPS inside the sandbox
+  // only (~/.ssh is denied by deny_credentials, and raw TCP egress is blocked, so
+  // SSH push can't work in here; the host keeps pushing over SSH as before).
+  "network": {
+    "credentials": ["github-git"],
+    "custom_credentials": {
+      "github-git": {
+        "upstream": "https://github.com",
+        "credential_key": "github_agent_token",
+        "inject_mode": "basic_auth",
+        "endpoint_rules": [
+          { "method": "GET", "path": "/*/*/info/refs" },
+          { "method": "POST", "path": "/*/*/git-upload-pack" },
+          { "method": "POST", "path": "/*/*/git-receive-pack" }
+        ]
+      }
+    }
+  },
+
+  "environment": {
+    "set_vars": {
+      "GIT_CONFIG_COUNT": "1",
+      "GIT_CONFIG_KEY_0": "url.https://github.com/.insteadOf",
+      "GIT_CONFIG_VALUE_0": "git@github.com:"
+    }
+  }
+
+  // stackable.jsonc filters outbound network by domain/IP allowlist. Local
+  // services reached by IP (e.g. the minikube apiserver via the `minikube`
+  // profile) aren't covered by that shared list since the IP is per-machine.
+  // If you use minikube regularly, prefer the shell alias documented in
+  // README.md (feeds `minikube ip` in fresh via NONO_ALLOW_DOMAIN on every
+  // invocation). Only hardcode it here instead if you're not using that alias
+  // — and remember to update it after `minikube delete` (otherwise stable
+  // across stop/start).
+  // "network": {
+  //   "allow_domain": ["192.168.49.2"]
+  // },
+
+  // NOTE: install.sh wires a daily host-side `claude update` hook in here. Dropped
+  // on this machine: Claude Code comes from the Arch `claude-code` package (root-owned
+  // /opt, and /usr/bin/claude exports DISABLE_UPDATES=1), so `claude update` can't
+  // work — pacman/paru handles updates. Re-add if the install method ever changes:
+  // "session_hooks": {
+  //   "before": {
+  //     "script": "/home/lars/.config/nono/hooks/claude-daily-update.sh",
+  //     "timeout_secs": 120
+  //   }
+  // }
+}
