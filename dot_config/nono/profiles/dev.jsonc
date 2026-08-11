@@ -25,7 +25,20 @@
       // jj creates a per-repo config dir under ~/.config/jj/repos/<hash> on first
       // use, so read-only here meant existing repos worked and new ones failed with
       // "Failed to determine the secure config for a repo".
-      "$HOME/.config/jj"
+      "$HOME/.config/jj",
+      // Cross-session work tracking (~/dev/work/{inprogress,done}/<project>/…).
+      // Needs to be writable from every session regardless of where it was
+      // launched, which the workdir grant can't do — hence rw here rather than
+      // relying on the broad ~/dev read below. Narrower than ~/dev on purpose.
+      "$HOME/dev/work",
+      // Go build cache (GOCACHE) and module cache (GOMODCACHE). Both need rw: the
+      // build cache is written on every compile, and the module cache on every
+      // dependency fetch. Deliberately NOT $HOME/go, which is what a naive
+      // --allow ~/go would grant: `go install` drops executables in ~/go/bin, and
+      // that lands on PATH the moment you add it (it isn't today, but the dir
+      // doesn't exist yet either — writable + on PATH is host code execution).
+      "$HOME/.cache/go-build",
+      "$HOME/go/pkg/mod"
     ],
     "read": [
       // Claude Code itself: Arch package `claude-code` installs to /opt, which no
@@ -87,6 +100,14 @@
   // only (~/.ssh is denied by deny_credentials, and raw TCP egress is blocked, so
   // SSH push can't work in here; the host keeps pushing over SSH as before).
   "network": {
+    // Go module fetching. nono's `developer` network profile covers crates, pypi,
+    // npm, maven, rubygems and packagist but no Go hosts, so `go build` dies with
+    // "Forbidden: host proxy.golang.org:443 is not in the allowlist" even once the
+    // caches below are granted. Verified as the minimal pair — a real build of a
+    // module-heavy project downloads and links fine without
+    // storage.googleapis.com, which is deliberately left out: unlike a package
+    // registry it's generic bucket storage, i.e. a usable exfil channel.
+    "allow_domain": ["proxy.golang.org", "sum.golang.org"],
     "credentials": ["github-git"],
     "custom_credentials": {
       "github-git": {
