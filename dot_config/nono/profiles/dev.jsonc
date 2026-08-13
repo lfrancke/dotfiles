@@ -108,6 +108,13 @@
     // storage.googleapis.com, which is deliberately left out: unlike a package
     // registry it's generic bucket storage, i.e. a usable exfil channel.
     "allow_domain": ["proxy.golang.org", "sum.golang.org"],
+    // Local postgres on 127.0.0.1:5432 (the intranet stack's dockerised
+    // postgres:18; credentials come from its docker-compose.yml, so no ~/.pgpass
+    // grant is needed and that file stays denied). Loopback only. Note open_port
+    // is connect+bind, not connect-only — the agent could also bind 5432 if
+    // nothing holds it. There is no connect-only equivalent in the profile schema;
+    // `--allow-connect-port` exists as a CLI flag only.
+    "open_port": [5432],
     "credentials": ["github-git"],
     "custom_credentials": {
       "github-git": {
