@@ -1,0 +1,62 @@
+{
+  // Optional add-on layer for the stackable-intranet Node/SvelteKit monorepo.
+  // Extends the personal `dev` layer, not `stackable` — opt in per session:
+  //     nono run --profile intranet -- claude
+  // Same pattern as minikube.jsonc: project-specific access that shouldn't be
+  // carried into every unrelated session.
+  "extends": "dev",
+
+  "meta": {
+    "name": "intranet",
+    "version": "0.1.0",
+    "description": "dev + mise toolchain and local service ports for stackable-apps",
+    "author": "Stackable"
+  },
+
+  "filesystem": {
+    "read": [
+      // The project mandates running node/npm/tsx through mise (engine-strict,
+      // needs node@24; system node is 22). mise's managed toolchains live here.
+      // READ-ONLY on purpose: executing is all that's needed, and a directory the
+      // agent can both write and exec from lets it rewrite its own interpreter.
+      // nono treats that as a risk too — tool-sandbox refuses pinned executables
+      // whose parent is writable through the outer capability set.
+      // Consequence: `mise install` / `mise use` will NOT work in here. Install
+      // toolchains from a normal shell; run them from the sandbox.
+      "$HOME/.local/share/mise"
+    ],
+    "allow": [
+      "$HOME/.cache/mise", // mise writes cache at runtime
+      "$HOME/.local/state/mise", // ...and state
+      // npm needs rw for _logs and _cacache; the base pack's node_runtime group
+      // grants read only, which breaks npx and litters warnings on every install.
+      "$HOME/.npm"
+    ]
+    // NOT granted: ~/.docker. The only symptom without it is a cosmetic
+    // config.json permission warning, and that file holds registry auth (it's
+    // covered by the deny_credentials group). If you genuinely need docker config,
+    // use the `minikube` profile for that session instead of widening this one.
+    //
+    // NOT granted: the checkout itself. Launch Claude Code from inside the project
+    // so the workdir grant covers it — `stackable.jsonc` only gives ~/dev read (per
+    // your own dev.jsonc), so `npm install` cannot write node_modules from a
+    // session started elsewhere. Local layout varies, so it can't be pinned here.
+  },
+
+  // Localhost TCP. `open_port` is connect+bind, which is what dev servers need:
+  // Vite binds the port and its HMR client connects back. Without these, every
+  // db:migrate / db:seed / dev:* fails with EPERM on connect or bind — which is a
+  // separate blocker from the mise one and looks nothing like it.
+  "network": {
+    "open_port": [
+      5432, // postgres        (docker-compose)
+      8080, // keycloak        (docker-compose)
+      3900, // garage S3 API   (docker-compose)
+      3902 // garage admin    (docker-compose)
+    ],
+    // Dev servers: community-portal pins 5175, hub pins 5177, internal-portal and
+    // shared-components take Vite's default 5173 and walk upward when occupied.
+    // Range gives headroom for running several at once.
+    "open_port_range": [[5173, 5180]]
+  }
+}

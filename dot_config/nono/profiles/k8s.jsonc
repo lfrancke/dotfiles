@@ -1,0 +1,53 @@
+{
+  // Optional add-on for talking to local k3d clusters. Opt in per session:
+  //     claude --sandbox k8s
+  // Not in dev.jsonc: the kubeconfig is cluster-admin on whatever is running, and
+  // the port range below is a real widening. Neither belongs in every session.
+  "extends": "dev",
+
+  "meta": {
+    "name": "k8s",
+    "version": "0.1.0",
+    "description": "dev + kubeconfig and Docker-published cluster ports"
+  },
+
+  // Read-only is enough: verified `kubectl get nodes` and `kubectl api-resources`
+  // both work without write access to ~/.kube/cache. No bypass_protection needed
+  // either — a plain grant already overrides the deny_credentials group.
+  "filesystem": { "read": ["$HOME/.kube"] },
+
+  "network": {
+    // Two gates apply and BOTH are needed. `open_port` alone fails with
+    // "Forbidden: host 0.0.0.0:37967 is not in the allowlist", because
+    // stackable.jsonc turns on proxy filtering, which gates loopback by host too.
+    // 0.0.0.0 is what k3d writes into the kubeconfig; 127.0.0.1 for everything else.
+    "allow_domain": ["0.0.0.0", "127.0.0.1"],
+
+    // k3d ingress, pinned by the cluster config so it can be named.
+    "open_port": [8080, 8443],
+
+    // The apiserver port is assigned by Docker at cluster creation, differs per
+    // cluster, and there are sometimes several clusters with different names — so it
+    // can't be pinned in a file, and a wrapper reading `docker port <name>` doesn't
+    // generalise. Docker auto-publishes from the kernel ephemeral range
+    // (/proc/sys/net/ipv4/ip_local_port_range = 32768 60999 here), so covering that
+    // band handles any number of clusters under any names with no maintenance.
+    //
+    // COST, stated plainly: `open_port` is scoped by PORT, not by address (verified
+    // 2026-08-13, contrary to the docs calling it "Localhost TCP IPC"). So this also
+    // permits raw TCP to any host on the internet on ports 32768-60999, bypassing
+    // the proxy's domain allowlist. It is NOT a boundary against a deliberate
+    // adversary — an attacker-controlled listener on a high port is reachable. What
+    // it does buy: 443, 80, 53 and 25 stay blocked (verified EPERM), so the default
+    // and opportunistic exfiltration paths are closed.
+    //
+    // The alternative was running these sessions with no sandbox at all, which is
+    // strictly worse: this keeps the whole filesystem boundary (~/.ssh, ~/.config/gh,
+    // cloud credentials, browser data, shell history, ~/dev read-only bar
+    // ~/dev/work) plus the rollback snapshots and the audit trail.
+    //
+    // If a cluster is ever created with a pinned low API port (k3d --api-port), add
+    // that port to `open_port` above rather than widening this range.
+    "open_port_range": [[32768, 60999]]
+  }
+}
