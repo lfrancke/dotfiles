@@ -110,10 +110,21 @@
     "allow_domain": ["proxy.golang.org", "sum.golang.org"],
     // Local postgres on 127.0.0.1:5432 (the intranet stack's dockerised
     // postgres:18; credentials come from its docker-compose.yml, so no ~/.pgpass
-    // grant is needed and that file stays denied). Loopback only. Note open_port
-    // is connect+bind, not connect-only — the agent could also bind 5432 if
-    // nothing holds it. There is no connect-only equivalent in the profile schema;
-    // `--allow-connect-port` exists as a CLI flag only.
+    // grant is needed and that file stays denied).
+    //
+    // NOT loopback only, despite what the docs imply ("Localhost TCP IPC").
+    // Verified 2026-08-13: `open_port` is scoped by PORT, not by address, so this
+    // also permits raw TCP to any host on the internet on port 5432 — bypassing the
+    // proxy's domain allowlist entirely. A profile granting only `open_port: [80]`
+    // could fetch https://1.1.1.1/ over a raw socket and get 120 bytes back.
+    // The proxy still gates tools that honour HTTP(S)_PROXY (kubectl, curl); the
+    // bypass applies to anything opening a raw socket, i.e. any script the agent
+    // writes itself.
+    //
+    // Kept anyway: port 5432 is a narrow channel and the local DB is needed. But
+    // every entry added here is an egress channel on that port, so keep the list
+    // short and never use a wide range. Also connect+bind, not connect-only —
+    // `--allow-connect-port` exists as a CLI flag but has no profile equivalent.
     "open_port": [5432],
     "credentials": ["github-git"],
     "custom_credentials": {
