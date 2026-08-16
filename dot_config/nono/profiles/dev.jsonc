@@ -16,6 +16,23 @@
       // but NOT ~/.cache/mozilla or ~/.cache/google-chrome, and ~/.cache/yay holds
       // AUR build trees for packages that get installed as root.
       "$HOME/.cache/pre-commit",
+      // prek keeps its own cache separate from pre-commit's: hooks/, tools/,
+      // repos/, patches/, scratch/ and prek.log, ~490MB here. A session reported
+      // only prek.log as denied, but that's just the first write it attempts —
+      // granting the file alone fails at the next one, so grant the directory.
+      // Same accepted trade as the other tool caches: tools/ holds executables
+      // prek then runs, so it's a writable exec path.
+      "$HOME/.cache/prek",
+      // ansible's local temp dir. Granting only ~/.ansible.cfg isn't enough: it dies
+      // with "Unhandled exception when retrieving 'DEFAULT_LOCAL_TMP': Permission
+      // denied: /home/lars/.ansible/tmp/...".
+      // Deliberately tmp/ and not all of ~/.ansible: `ansible-galaxy login` writes an
+      // API token to ~/.ansible/galaxy_token, and a deny can't carve it back out —
+      // Landlock refuses to start at all with "deny-overlap is not enforceable on
+      // Linux" when a deny sits under an allowed parent directory. Narrow the grant
+      // instead. If ansible later needs cp/ (SSH ControlPath) or collections/, add
+      // those specific subdirectories the same way.
+      "$HOME/.ansible/tmp",
       "$HOME/.cache/virtualenv",
       "$HOME/.cache/uv",
       "$HOME/.cache/pip",
@@ -54,6 +71,11 @@
     ],
     "read_file": [
       "$HOME/.gitignore", // core.excludesfile; the git_config group only has ~/.gitignore_global
+      // Read by ansible whenever it runs, including under a prek/pre-commit hook.
+      // Contents here are [defaults] + roles_path, no credentials — worth
+      // re-checking if that ever changes, since ansible.cfg can name a
+      // vault_password_file.
+      "$HOME/.ansible.cfg",
       "$HOME/.ssh/id_ed25519.pub",
       // Still needed: without it `whoami`, `id -un`, `getent passwd` and Node's
       // os.userInfo() all fail (getpwuid is blocked). World-readable, no hashes
